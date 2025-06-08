@@ -23,7 +23,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   skills,
 }) => {
   return (
-    <Card className="bg-transparent text-secondary border-none shadow-none">
+    <Card className="bg-transparent text-secondary  shadow-none p-6 hover:bg-cyan-50/5  hover:backdrop-blur-sm hover:shadow-lg border border-transparent hover:border-t-white/10">
       <CardTitle className="!text-xs opacity-60 tracking-widest ">
         {period}
       </CardTitle>

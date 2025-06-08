@@ -7,7 +7,7 @@ body {
 }
 
 h4{
-    @apply !mb-6 tracking-widest text-sm
+    @apply  tracking-widest text-sm
 }
 @layer base {
   :root {
@@ -17,7 +17,7 @@ h4{
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 300 1% 14%;
+    --primary: 300 1% 5%;
     --primary-foreground: 0 0% 98%;
     --secondary: 300, 1%, 70%;
     --secondary-foreground: 240 5.9% 10%;
@@ -70,6 +70,9 @@ h4{
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply  bg-primary text-foreground;
+  }
+  a {
+    @apply !no-underline !text-inherit !tracking-widest !font-bold !text-xs;
   }
 }

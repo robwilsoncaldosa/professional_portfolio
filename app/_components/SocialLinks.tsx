@@ -7,7 +7,7 @@ import {
 
 const SocialLinks: React.FC = () => {
   return (
-    <article className="flex justify-start gap-8 mb-16 mt-6 text-secondary">
+    <article className="flex justify-start gap-8   text-secondary mt-auto">
       <GithubIcon />
       <LinkedinIcon />
       <FacebookIcon />

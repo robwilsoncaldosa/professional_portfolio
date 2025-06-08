@@ -3,8 +3,8 @@ import ExperienceCard from './ExperienceCard';
 
 const ExperienceSection: React.FC = () => {
   return (
-    <>
-      <h4 className="font-bold">EXPERIENCE</h4>
+    <div id='Experience' className=' md:mt-25'>
+      <h4 className="font-bold sticky top-0 py-3 bg-transparent backdrop-blur-lg sm:hidden px-6 z-50">EXPERIENCE</h4>
       <article>
         <ExperienceCard 
           period="2025 - PRESENT"
@@ -30,7 +30,7 @@ const ExperienceSection: React.FC = () => {
           skills={["C#", ".NET Core", "JavaScript", "JQuery", "Bootstrap"]}
         />
       </article>
-    </>
+    </div>
   );
 };
 
