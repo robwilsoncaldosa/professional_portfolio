@@ -3,7 +3,7 @@ import ExperienceCard from './ExperienceCard';
 
 const ExperienceSection: React.FC = () => {
   return (
-    <div id='Experience' className=' md:mt-25'>
+    <div id='Experience' className=' md:mt-20'>
       <h4 className="font-bold sticky top-0 py-3 bg-transparent backdrop-blur-lg sm:hidden px-6 z-50">EXPERIENCE</h4>
       <article>
         <ExperienceCard 
