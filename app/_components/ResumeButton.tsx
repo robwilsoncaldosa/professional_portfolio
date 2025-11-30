@@ -6,7 +6,7 @@ import { ArrowRightIcon } from "lucide-react";
 const ResumeButton: React.FC = () => {
   return (
     <Button
-    effect={'hoverUnderline'}
+      effect={'hoverUnderline'}
       className="text-md ps-6 font-bold my-10 hover:bg-transparent bg-transparent group"
       size={"lg"}
       onClick={() => {

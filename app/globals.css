@@ -6,9 +6,10 @@ body {
   font-family: "Geist", sans-serif;
 }
 
-h4{
-    @apply  tracking-widest text-sm
+h4 {
+  @apply tracking-widest text-sm
 }
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -36,7 +37,9 @@ h4{
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 1rem;
+    --card-opacity: 0.5;
   }
+
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
@@ -62,6 +65,7 @@ h4{
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --card-opacity: 0.5;
   }
 }
 
@@ -69,9 +73,11 @@ h4{
   * {
     @apply border-border;
   }
+
   body {
-    @apply  bg-primary text-foreground;
+    @apply bg-primary text-foreground;
   }
+
   a {
     @apply !no-underline !text-inherit !tracking-widest !font-bold !text-xs;
   }

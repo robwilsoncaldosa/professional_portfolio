@@ -5,8 +5,8 @@ const ExperienceSection: React.FC = () => {
   return (
     <div id='Experience' className=' md:mt-20'>
       <h4 className="font-bold sticky top-0 py-3 bg-transparent backdrop-blur-lg sm:hidden px-6 z-50">EXPERIENCE</h4>
-      <article>
-        <ExperienceCard 
+      <article className="group [&:has(.exp-card:hover)>.exp-card:not(:hover)]:opacity-[var(--card-opacity)] [&:has(.exp-card:focus-within)>.exp-card:not(:focus-within)]:opacity-[var(--card-opacity)]">
+        <ExperienceCard
           period="2025 - PRESENT"
           title="Package App Development Analyst"
           company="Accenture"
@@ -14,7 +14,7 @@ const ExperienceSection: React.FC = () => {
           skills={["C#", "ASP.NET Core", "JavaScript", "React", "SQL", "Waterfall"]}
         />
 
-        <ExperienceCard 
+        <ExperienceCard
           period="2024 - 2025"
           title="Full Stack Developer"
           company="DNA Micro Software Inc"
@@ -22,7 +22,7 @@ const ExperienceSection: React.FC = () => {
           skills={["JavaScript", "TypeScript", "React", "Next.js", "Node.js", "Tailwind", "Storybook"]}
         />
 
-        <ExperienceCard 
+        <ExperienceCard
           period="FEB - NOV 2023"
           title="Full Stack Developer"
           company="Prince Retail Group of Companies"
