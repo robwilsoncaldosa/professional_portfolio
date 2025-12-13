@@ -19,7 +19,7 @@ const ProfileHeader: React.FC = () => {
       const observer = new IntersectionObserver(
         (entries) => {
           // Find the entry with the highest intersection ratio
-          const mostVisible = entries.reduce((prev, current) => 
+          const mostVisible = entries.reduce((prev, current) =>
             current.intersectionRatio > prev.intersectionRatio ? current : prev
           );
 
@@ -52,8 +52,8 @@ const ProfileHeader: React.FC = () => {
   };
 
   return (
-    <section 
-      title="left-section" 
+    <section
+      title="left-section"
       className="md:flex md:flex-col text-foreground px-6 md:px-0 md:max-h-screen md:py-24 md:sticky top-0"
     >
       {/* Header Section */}
@@ -73,30 +73,28 @@ const ProfileHeader: React.FC = () => {
       <nav className="flex-col gap-4 mt-8 hidden md:flex" role="navigation" aria-label="Page sections">
         {NAVIGATION_SECTIONS.map((section) => {
           const isActive = activeSection === section.id;
-          
+
           return (
-            <div 
+            <div
               key={section.id}
               className="flex items-center gap-2 group cursor-pointer"
               onClick={() => handleSectionClick(section.id)}
             >
               {/* Animated indicator line */}
-              <div 
-                className={`h-[1px] transition-all duration-300 ease-out ${
-                  isActive 
-                    ? 'w-16 bg-foreground' 
-                    : 'w-8 bg-secondary group-hover:w-12 group-hover:bg-foreground/70'
-                }`} 
+              <div
+                className={`h-[1px] transition-all duration-300 ease-out ${isActive
+                  ? 'w-16 bg-foreground'
+                  : 'w-8 bg-secondary group-hover:w-12 group-hover:bg-foreground/70'
+                  }`}
               />
-              
+
               {/* Section link */}
-              <a 
+              <a
                 href={`#${section.id}`}
-                className={`uppercase text-sm tracking-wider transition-colors duration-300 ease-out ${
-                  isActive 
-                    ? 'text-foreground' 
-                    : '!text-secondary !group-hover:text-foreground/80'
-                }`}
+                className={`uppercase transition-colors duration-300 ease-out tracking-widest font-bold text-xs ${isActive
+                  ? 'text-foreground'
+                  : '!text-secondary !group-hover:text-foreground/80'
+                  }`}
                 onClick={(e) => {
                   e.preventDefault();
                   handleSectionClick(section.id);

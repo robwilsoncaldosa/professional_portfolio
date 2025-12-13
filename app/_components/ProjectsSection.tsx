@@ -1,20 +1,24 @@
 import React from 'react';
 import ProjectCard from './ProjectCard';
+import { FEATURED_PROJECTS } from '../../config/project-data.config';
 
 const ProjectsSection: React.FC = () => {
   return (
-    <div id='Projects' className='*:px-6'>
-      <h4 className="font-bold sticky top-0 py-3 bg-transparent backdrop-blur-lg sm:hidden">PROJECTS</h4>
-      <ProjectCard 
-        title="Portfolio Website"
-        description="A modern, responsive portfolio website built with Next.js and Tailwind CSS. Features a clean design with dark mode support and component-based architecture."
-        skills={["TypeScript", "Next.js", "React", "Tailwind CSS", "Shadcn UI"]}
-      />
-      <ProjectCard 
-        title="E-commerce Platform"
-        description="Developed a full-featured e-commerce platform with user authentication, product catalog, shopping cart, and payment processing integration."
-        skills={["JavaScript", "React", "Node.js", "Express", "MongoDB", "Stripe API"]}
-      />
+    <div id='Projects' className=' md:mt-20'>
+      <h4 className="font-bold sticky top-0 py-3 bg-transparent backdrop-blur-lg sm:hidden z-50 px-6">PROJECTS</h4>
+      <article className="group [&:has(.exp-card:hover)>.exp-card:not(:hover)]:opacity-[var(--card-opacity)] [&:has(.exp-card:focus-within)>.exp-card:not(:focus-within)]:opacity-[var(--card-opacity)]">
+        {FEATURED_PROJECTS.map((project) => (
+          <ProjectCard
+            key={project.id}
+            title={project.name}
+            description={project.description}
+            skills={project.skills}
+            href={project.href}
+            imageSrc={project.imageSrc}
+            imageAlt={project.imageAlt}
+          />
+        ))}
+      </article>
     </div>
   );
 };

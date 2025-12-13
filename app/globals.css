@@ -79,6 +79,6 @@ h4 {
   }
 
   a {
-    @apply !no-underline !text-inherit !tracking-widest !font-bold !text-xs;
+    @apply !no-underline !text-inherit;
   }
 }

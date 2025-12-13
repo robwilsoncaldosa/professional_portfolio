@@ -67,6 +67,16 @@ export default {
       animation: {
         shine: "shine 3s ease-out infinite",
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            img: {
+              marginTop: "0",
+              marginBottom: "0",
+            },
+          },
+        },
+      },
     },
   },
   plugins: [tailwindcssAnimate, tailwindcssTypography],
