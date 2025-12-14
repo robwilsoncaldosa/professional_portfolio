@@ -5,6 +5,12 @@ import HeadingWithSubtext from "@/components/shared/heading-with-subtext";
 import AnimatedGlow from "../_components/animated-glow";
 import { PROJECTS } from "../../config/project-data.config";
 
+const ROW_INTERACTIVE_CLASSES =
+  "group align-top border-b border-border/40 last:border-b-0 transition-colors duration-200 hover:bg-accent/5 active:bg-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+
+const LINK_TEXT_CLASSES =
+  "inline-flex items-center gap-1 underline-offset-4 group-hover:underline";
+
 export default function ProjectsPage() {
   return (
     <main className="w-full min-h-screen relative">
@@ -61,25 +67,25 @@ export default function ProjectsPage() {
                 return (
                   <tr
                     key={`${project.year}-${project.name}`}
-                    className={`group align-top border-b border-border/40 last:border-b-0 transition-colors duration-200 ${hasLink ? "cursor-pointer hover:bg-accent/5" : ""
-                      }`}
+                    className={ROW_INTERACTIVE_CLASSES}
                     onClick={
                       hasLink && href
                         ? () => window.open(href, "_blank")
                         : undefined
                     }
-                    onKeyDown={
-                      hasLink && href
-                        ? (event) => {
-                          if (event.key === "Enter" || event.key === " ") {
-                            event.preventDefault();
-                            window.open(href, "_blank");
-                          }
-                        }
-                        : undefined
-                    }
+                    onKeyDown={(event) => {
+                      if (event.key !== "Enter" && event.key !== " ") {
+                        return;
+                      }
+
+                      event.preventDefault();
+
+                      if (hasLink && href) {
+                        window.open(href, "_blank");
+                      }
+                    }}
                     role={hasLink ? "link" : undefined}
-                    tabIndex={hasLink ? 0 : undefined}
+                    tabIndex={0}
                     aria-label={
                       hasLink && href
                         ? `${project.name} – ${href}`
@@ -114,15 +120,20 @@ export default function ProjectsPage() {
                           href={href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                          className="hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                           onClick={(event) => event.stopPropagation()}
                         >
-                          <span className="underline-offset-4 group-hover:underline">
+                          <span className={LINK_TEXT_CLASSES}>
                             {href.replace(/^https?:\/\//, "")}
                           </span>
                         </Link>
                       ) : (
-                        <span className="opacity-60">Private</span>
+                        <span
+                          className={`${LINK_TEXT_CLASSES} text-secondary opacity-60 cursor-default`}
+                          aria-label={`${project.name} link unavailable`}
+                        >
+                          Private
+                        </span>
                       )}
                     </td>
                   </tr>
