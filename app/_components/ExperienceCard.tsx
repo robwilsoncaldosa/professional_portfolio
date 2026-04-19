@@ -12,8 +12,10 @@ interface ExperienceCardProps {
   period: string;
   title: string;
   company: string;
-  description: string;
-  skills: string[];
+  description?: string;
+  responsibilities?: string[];
+  achievements?: string[];
+  skills?: string[];
   href?: string;
 }
 
@@ -22,6 +24,8 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   title,
   company,
   description,
+  responsibilities,
+  achievements,
   skills,
   href
 }) => {
@@ -41,17 +45,46 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
           {period}
         </CardTitle>
         <CardDescription>
-          <HeadingWithSubtext title={title} subtitle={company} />
+          <HeadingWithSubtext
+            title={title}
+            subtitle={company}
+          />
         </CardDescription>
         <CardContent className="px-0 text-sm">
-          <p className="mt-3 font-normal">{description}</p>
-          <div className="flex gap-1 flex-wrap gap-y-2">
-            {skills.map((skill, index) => (
-              <Badge key={index}>
-                <span>{skill}</span>
-              </Badge>
-            ))}
-          </div>
+          {description && <p className="mt-3 font-normal">{description}</p>}
+          {responsibilities && responsibilities.length > 0 && (
+            <div className="mt-4">
+              <p className="text-xs font-semibold uppercase tracking-widest text-foreground/80">
+                Responsibilities
+              </p>
+              <ul className="mt-2 list-disc space-y-2 pl-5 text-sm">
+                {responsibilities.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {achievements && achievements.length > 0 && (
+            <div className="mt-4">
+              <p className="text-xs font-semibold uppercase tracking-widest text-foreground/80">
+                Achievements
+              </p>
+              <ul className="mt-2 list-disc space-y-2 pl-5 text-sm">
+                {achievements.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {skills && skills.length > 0 && (
+            <div className="flex gap-1 flex-wrap gap-y-2">
+              {skills.map((skill, index) => (
+                <Badge key={index}>
+                  <span>{skill}</span>
+                </Badge>
+              ))}
+            </div>
+          )}
         </CardContent>
       </a>
     </Card>

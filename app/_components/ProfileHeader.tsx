@@ -62,10 +62,10 @@ const ProfileHeader: React.FC = () => {
           Rob Wilson<br className='sm:hidden' />
         </h1>
         <span className="text-xl font-medium md:mt-10 leading-loose tracking-tight">
-          Full Stack Developer
+          Senior Software Developer
         </span>
         <p className="mt-4 text-secondary max-w-sm">
-          I build and maintain accessible, user-friendly web applications.
+          I design and plan ahead, from thoughtful UI and UX to better developer experience and systems that scale and perform well.
         </p>
       </div>
 

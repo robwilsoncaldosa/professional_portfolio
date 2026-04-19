@@ -6,7 +6,10 @@ type HeadingWithSubtextProps = {
   subtitle?: string;
 }
 
-function HeadingWithSubtext({ title, subtitle }: HeadingWithSubtextProps) {
+function HeadingWithSubtext({
+  title,
+  subtitle,
+}: HeadingWithSubtextProps) {
   return (
     <>
       <h3 className="mt-0 mb-0 flex items-center gap-2 w-fit">
@@ -17,7 +20,7 @@ function HeadingWithSubtext({ title, subtitle }: HeadingWithSubtextProps) {
         <ArrowRight className="w-4 h-4 text-foreground transition-transform duration-300 ease-in-out group-hover/card:translate-x-2" />
       </h3>
       {subtitle && (
-        <span className="text-secondary text-sm font-semibold">
+        <span className="mt-1 block text-secondary text-sm font-semibold">
           {subtitle}
         </span>
       )}
@@ -26,4 +29,3 @@ function HeadingWithSubtext({ title, subtitle }: HeadingWithSubtextProps) {
 }
 
 export default HeadingWithSubtext;
-

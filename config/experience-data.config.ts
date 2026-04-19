@@ -20,8 +20,12 @@ export interface ExperienceConfig {
   period: string;
   title: string;
   company: string;
-  description: string;
-  skills: string[];
+  location?: string;
+  caption?: string;
+  description?: string;
+  responsibilities?: string[];
+  achievements?: string[];
+  skills?: string[];
   href?: string;
 }
 
@@ -31,9 +35,27 @@ export interface ExperienceChangelogEntry {
   summary: string;
 }
 
-export const EXPERIENCE_DATA_VERSION = "1.0.0";
+export const EXPERIENCE_DATA_VERSION = "1.3.0";
 
 export const EXPERIENCE_DATA_CHANGELOG: readonly ExperienceChangelogEntry[] = [
+  {
+    version: "1.3.0",
+    date: "2026-04-19",
+    summary:
+      "Restored M Lhuillier as the current employer starting February 2026 and set Accenture to end in January 2026.",
+  },
+  {
+    version: "1.2.0",
+    date: "2026-04-19",
+    summary:
+      "Updated the current employer to Accenture, added shared location and caption fields, and simplified the latest experience entry.",
+  },
+  {
+    version: "1.1.0",
+    date: "2026-04-19",
+    summary:
+      "Updated current employment to Technology Group MLhuillier Financial Services, Inc. and added optional responsibilities and achievements fields.",
+  },
   {
     version: "1.0.0",
     date: "2024-12-14",
@@ -43,10 +65,33 @@ export const EXPERIENCE_DATA_CHANGELOG: readonly ExperienceChangelogEntry[] = [
 
 const RAW_EXPERIENCES: ExperienceConfig[] = [
   {
+    id: "mlhuillier",
+    period: "FEB 2026 - PRESENT",
+    title: "Senior Software Developer",
+    company: "Technology Group M Lhuillier Financial Services, Inc.",
+    location:
+      "Cebu City, Cebu, Philippines",
+    description:
+      "Build and maintain financial services applications that support internal teams and customer-facing operations with a strong focus on reliability, maintainability, and delivery quality.",
+    caption:
+      "Developing dependable software that keeps critical financial operations efficient, stable, and ready to scale.",
+    skills: [
+      "React",
+      "Next.js",
+      "Node.js",
+      "Docker",
+      "Google Cloud Platform",
+      "Cloud Run",
+    ],
+  },
+  {
     id: "accenture",
-    period: "2025 - PRESENT",
+    period: "2025 - JAN 2026",
     title: "Package App Development Analyst",
     company: "Accenture",
+    location: "eBloc 2 Tower, West Geonzon Street, Cebu IT Park, Apas, Cebu City, Cebu, Philippines",
+    caption:
+      "Delivering dependable solutions that move work forward faster and create clear business value.",
     description:
       "Developing and maintaining enterprise applications for clients across various industries. Collaborating with global teams to implement solutions that meet business requirements. Participating in the full software development lifecycle from requirements gathering to deployment.",
     skills: [
@@ -66,6 +111,7 @@ const RAW_EXPERIENCES: ExperienceConfig[] = [
     period: "2024 - 2025",
     title: "Full Stack Developer",
     company: "DNA Micro Software Inc",
+    location: "117 Gorordo Ave, Camputhaw, Cebu City, Cebu, Philippines",
     description:
       "Build and maintain critical components used in DNA Micro's frontend across all projects. Work closely with Business Analysts, cross-functional teams, including developers, designers, functional managers, and product managers.",
     skills: [
@@ -84,6 +130,8 @@ const RAW_EXPERIENCES: ExperienceConfig[] = [
     period: "FEB - NOV 2023",
     title: "Full Stack Developer",
     company: "Prince Retail Group of Companies",
+    location:
+      "PRG Tower, P. Basubas Street, Brgy. Tipolo, Mandaue City, Cebu, Philippines",
     description:
       "Developed and styled interactive web apps for the company's infrastructure department data and marketing data with a focus on user experience and performance optimization. Collaborated with cross-functional teams to ensure seamless integration and functionality.",
     skills: ["C#", ".NET Core", "JavaScript", "JQuery", "Bootstrap"],
@@ -129,22 +177,35 @@ function validateExperiencesConfig(
       );
     }
 
-    if (!experience.description) {
+    if (
+      experience.responsibilities &&
+      (!Array.isArray(experience.responsibilities) ||
+        experience.responsibilities.length === 0)
+    ) {
       throw new Error(
-        `experience-data.config: experience "${experience.id}" is missing description`
+        `experience-data.config: experience "${experience.id}" responsibilities must be a non-empty array when provided`
       );
     }
 
     if (
-      !Array.isArray(experience.skills) ||
-      experience.skills.length === 0
+      experience.achievements &&
+      (!Array.isArray(experience.achievements) ||
+        experience.achievements.length === 0)
     ) {
       throw new Error(
-        `experience-data.config: experience "${experience.id}" must have at least one skill`
+        `experience-data.config: experience "${experience.id}" achievements must be a non-empty array when provided`
+      );
+    }
+
+    if (
+      experience.skills &&
+      (!Array.isArray(experience.skills) || experience.skills.length === 0)
+    ) {
+      throw new Error(
+        `experience-data.config: experience "${experience.id}" skills must be a non-empty array when provided`
       );
     }
   });
 
   return experiences;
 }
-

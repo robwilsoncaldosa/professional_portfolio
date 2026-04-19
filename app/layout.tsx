@@ -14,7 +14,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Rob Caldosa",
-  description: "Rob Wilson A. Caldosa's personal website",
+  description:
+    "Senior Software Developer portfolio featuring React, Next.js, Node.js, Docker, and Google Cloud Platform work.",
 
 };
 
