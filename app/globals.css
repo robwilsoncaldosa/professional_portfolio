@@ -3,8 +3,10 @@
 @tailwind utilities;
 
 body {
-  font-family: "Geist", sans-serif;
+  font-family: -apple-system, "SF Pro Text", "SF Pro Display", "Helvetica Neue", sans-serif;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h4 {
@@ -14,97 +16,104 @@ h4 {
 @layer base {
   :root {
     /*
-      Color system tuned for a darker, calmer look:
-      graphite foundations, softened text contrast, and a restrained blue-steel glow.
+      Apple Human Interface Guidelines — Dark Mode
+      ─────────────────────────────────────────────
+      Surface hierarchy (macOS NSColor equivalents):
+        #1c1c1e  windowBackgroundColor          → --background / --primary
+        #2c2c2e  secondarySystemBackground      → --card
+        #3a3a3c  tertiarySystemBackground       → --muted / --input
+        #48484a  quaternarySystemBackground     → --accent
 
-      Palette reference:
-      - Base canvas: #090d12
-      - Elevated surface: #10161d
-      - Deep surface: #16202a
-      - Primary text: #dde5ee
-      - Secondary text: #9fb0c2
-      - Accent surface: #24313d
-      - Glow highlight: #6a90ad
-      - Secondary glow: #465f76
+      Label hierarchy (macOS NSColor label):
+        #f5f5f7  label (primary)                → --foreground
+        #aeaeb2  secondaryLabel                 → --secondary
+        #636366  tertiaryLabel / placeholderText→ --muted-foreground
+        #3a3a3c  quaternaryLabel (dividers)     → --border
 
-      Contrast intent:
-      - #dde5ee on #090d12 exceeds WCAG AA for body text
-      - #9fb0c2 on #090d12 exceeds WCAG AA for secondary/supporting text
+      Apple system colors (dark):
+        #0A84FF  systemBlue                     → --ring / --chart-1
+        #30D158  systemGreen                    → --chart-2
+        #5AC8FA  systemTeal                     → --chart-3
+        #5E5CE6  systemIndigo                   → --chart-4
+        #BF5AF2  systemPurple                   → --chart-5
+        #FF453A  systemRed                      → --destructive
     */
-    --background: 216 26% 9%;
-    --foreground: 210 24% 90%;
-    --card: 215 24% 12%;
-    --card-foreground: 210 24% 90%;
-    --popover: 216 24% 11%;
-    --popover-foreground: 210 24% 90%;
-    --primary: 220 31% 6%;
-    --primary-foreground: 210 24% 90%;
-    --secondary: 212 22% 70%;
-    --secondary-foreground: 210 24% 90%;
-    --muted: 216 18% 18%;
-    --muted-foreground: 212 18% 70%;
-    --accent: 212 25% 20%;
-    --accent-foreground: 210 24% 90%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 216 16% 22%;
-    --input: 216 16% 22%;
-    --ring: 205 33% 56%;
-    --chart-1: 205 37% 56%;
-    --chart-2: 222 28% 46%;
-    --chart-3: 189 27% 50%;
-    --chart-4: 236 18% 40%;
-    --chart-5: 210 24% 66%;
-    --radius: 1rem;
-    --card-opacity: 0.58;
-    --glow-primary-rgb: 106, 144, 173;
-    --glow-secondary-rgb: 70, 95, 118;
-    --glow-tertiary-rgb: 30, 44, 58;
-    --texture-rgb: 221, 229, 238;
-    --page-gradient-top: #141c25;
-    --page-gradient-mid: #0c1118;
-    --page-gradient-bottom: #090d12;
-    --page-gradient-accent-start: rgba(106, 144, 173, 0.14);
-    --page-gradient-accent-mid: rgba(70, 95, 118, 0.1);
-    --page-gradient-accent-end: rgba(30, 44, 58, 0.16);
+
+    --background: 240 4% 11%;
+    --foreground: 300 3% 96%;
+    --card: 240 3% 17%;
+    --card-foreground: 300 3% 96%;
+    --popover: 240 4% 14%;
+    --popover-foreground: 300 3% 96%;
+    --primary: 240 4% 11%;
+    --primary-foreground: 300 3% 96%;
+    --secondary: 240 2% 68%;
+    --secondary-foreground: 300 3% 96%;
+    --muted: 240 3% 23%;
+    --muted-foreground: 240 2% 39%;
+    --accent: 240 2% 29%;
+    --accent-foreground: 300 3% 96%;
+    --destructive: 3 100% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 3% 23%;
+    --input: 240 3% 23%;
+    --ring: 211 100% 51%;
+    --chart-1: 211 100% 51%;
+    --chart-2: 142 60% 51%;
+    --chart-3: 199 94% 67%;
+    --chart-4: 242 77% 63%;
+    --chart-5: 287 86% 65%;
+    --radius: 0.625rem;
+
+    --card-opacity: 1;
+    --glow-primary-rgb: 10, 132, 255;
+    --glow-secondary-rgb: 44, 44, 46;
+    --glow-tertiary-rgb: 28, 28, 30;
+    --texture-rgb: 245, 245, 247;
+    --page-gradient-top: #232325;
+    --page-gradient-mid: #1c1c1e;
+    --page-gradient-bottom: #161618;
+    --page-gradient-accent-start: rgba(10, 132, 255, 0.05);
+    --page-gradient-accent-mid: rgba(10, 132, 255, 0.025);
+    --page-gradient-accent-end: rgba(28, 28, 30, 0.0);
   }
 
   .dark {
-    --background: 216 26% 8%;
-    --foreground: 210 22% 92%;
-    --card: 216 22% 10%;
-    --card-foreground: 210 22% 92%;
-    --popover: 216 22% 9%;
-    --popover-foreground: 210 22% 92%;
-    --primary: 220 32% 5%;
-    --primary-foreground: 210 22% 92%;
-    --secondary: 212 18% 68%;
-    --secondary-foreground: 210 22% 92%;
-    --muted: 216 16% 15%;
-    --muted-foreground: 212 15% 68%;
-    --accent: 212 22% 18%;
-    --accent-foreground: 210 22% 92%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 216 14% 18%;
-    --input: 216 14% 18%;
-    --ring: 205 30% 54%;
-    --chart-1: 205 34% 54%;
-    --chart-2: 222 24% 42%;
-    --chart-3: 190 24% 48%;
-    --chart-4: 235 16% 36%;
-    --chart-5: 210 20% 62%;
-    --card-opacity: 0.58;
-    --glow-primary-rgb: 116, 152, 180;
-    --glow-secondary-rgb: 76, 101, 124;
-    --glow-tertiary-rgb: 32, 46, 60;
-    --texture-rgb: 228, 235, 242;
-    --page-gradient-top: #161f29;
-    --page-gradient-mid: #0d131a;
-    --page-gradient-bottom: #080c11;
-    --page-gradient-accent-start: rgba(116, 152, 180, 0.15);
-    --page-gradient-accent-mid: rgba(76, 101, 124, 0.11);
-    --page-gradient-accent-end: rgba(32, 46, 60, 0.18);
+    --background: 240 4% 11%;
+    --foreground: 300 3% 96%;
+    --card: 240 3% 17%;
+    --card-foreground: 300 3% 96%;
+    --popover: 240 4% 14%;
+    --popover-foreground: 300 3% 96%;
+    --primary: 240 4% 11%;
+    --primary-foreground: 300 3% 96%;
+    --secondary: 240 2% 68%;
+    --secondary-foreground: 300 3% 96%;
+    --muted: 240 3% 23%;
+    --muted-foreground: 240 2% 39%;
+    --accent: 240 2% 29%;
+    --accent-foreground: 300 3% 96%;
+    --destructive: 3 100% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 3% 23%;
+    --input: 240 3% 23%;
+    --ring: 211 100% 51%;
+    --chart-1: 211 100% 51%;
+    --chart-2: 142 60% 51%;
+    --chart-3: 199 94% 67%;
+    --chart-4: 242 77% 63%;
+    --chart-5: 287 86% 65%;
+    --card-opacity: 1;
+    --glow-primary-rgb: 10, 132, 255;
+    --glow-secondary-rgb: 44, 44, 46;
+    --glow-tertiary-rgb: 28, 28, 30;
+    --texture-rgb: 245, 245, 247;
+    --page-gradient-top: #232325;
+    --page-gradient-mid: #1c1c1e;
+    --page-gradient-bottom: #161618;
+    --page-gradient-accent-start: rgba(10, 132, 255, 0.05);
+    --page-gradient-accent-mid: rgba(10, 132, 255, 0.025);
+    --page-gradient-accent-end: rgba(28, 28, 30, 0.0);
   }
 }
 
@@ -121,37 +130,20 @@ h4 {
     @apply bg-primary text-foreground;
     background-color: hsl(var(--primary));
     background-image:
-      radial-gradient(circle at 16% 18%,
-        var(--page-gradient-accent-start) 0%,
-        transparent 30%),
-      radial-gradient(circle at 82% 14%,
-        var(--page-gradient-accent-mid) 0%,
-        transparent 28%),
-      radial-gradient(circle at 18% 78%,
-        var(--page-gradient-accent-end) 0%,
-        transparent 34%),
-      radial-gradient(circle at 78% 72%,
-        rgba(var(--glow-secondary-rgb), 0.06) 0%,
-        transparent 32%),
-      radial-gradient(circle at 50% 100%,
-        rgba(var(--glow-tertiary-rgb), 0.14) 0%,
-        transparent 42%),
-      linear-gradient(135deg,
-        rgba(var(--glow-primary-rgb), 0.035) 0%,
-        transparent 36%,
-        rgba(var(--glow-secondary-rgb), 0.03) 100%),
+      radial-gradient(ellipse 80% 40% at 50% 0%,
+        rgba(10, 132, 255, 0.05) 0%,
+        transparent 100%),
       linear-gradient(180deg,
         var(--page-gradient-top) 0%,
-        #101720 20%,
-        var(--page-gradient-mid) 52%,
+        var(--page-gradient-mid) 40%,
         var(--page-gradient-bottom) 100%);
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: 100% 100%;
     background-attachment: fixed;
     transition:
-      background-color 300ms ease,
-      color 300ms ease,
-      border-color 300ms ease;
+      background-color 250ms ease,
+      color 250ms ease,
+      border-color 250ms ease;
     overflow-x: hidden;
   }
 
@@ -164,16 +156,28 @@ h4 {
   [role="link"],
   [tabindex="0"] {
     transition:
-      color 220ms ease,
-      background-color 220ms ease,
-      border-color 220ms ease,
-      box-shadow 220ms ease,
-      transform 220ms ease;
+      color 200ms ease-out,
+      background-color 200ms ease-out,
+      border-color 200ms ease-out,
+      box-shadow 200ms ease-out,
+      opacity 200ms ease-out,
+      transform 180ms ease-out;
   }
 
   ::selection {
-    background: rgba(var(--glow-primary-rgb), 0.25);
-    color: hsl(var(--foreground));
+    background: rgba(10, 132, 255, 0.3);
+    color: #f5f5f7;
+  }
+
+  hr {
+    border: none;
+    border-top: 0.5px solid rgba(255, 255, 255, 0.08);
+  }
+
+  :focus-visible {
+    outline: 2px solid rgba(10, 132, 255, 0.8);
+    outline-offset: 2px;
+    border-radius: var(--radius);
   }
 }
 
