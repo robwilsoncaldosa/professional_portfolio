@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import SocialLinks from './SocialLinks';
+import ContactCTA from './ContactCTA';
 
 // Navigation configuration - easy to maintain and extend
 const NAVIGATION_SECTIONS = [
@@ -54,7 +55,7 @@ const ProfileHeader: React.FC = () => {
   return (
     <section
       title="left-section"
-      className="md:flex md:flex-col text-foreground px-6 md:px-0 md:max-h-screen md:py-24 md:sticky top-0"
+      className="hero-stagger md:flex md:flex-col text-foreground px-6 md:px-0 md:max-h-screen md:py-24 md:sticky top-0"
     >
       {/* Header Section */}
       <div className="mb-8">
@@ -107,6 +108,8 @@ const ProfileHeader: React.FC = () => {
           );
         })}
       </nav>
+
+      <ContactCTA />
 
       <SocialLinks />
     </section>

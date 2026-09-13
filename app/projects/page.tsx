@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import HeadingWithSubtext from "@/components/shared/heading-with-subtext";
-import AnimatedGlow from "../_components/animated-glow";
+import CursorGlow from "../_components/CursorGlow";
 import { PROJECTS } from "../../config/project-data.config";
 
 const ROW_INTERACTIVE_CLASSES =
@@ -14,7 +14,7 @@ const LINK_TEXT_CLASSES =
 export default function ProjectsPage() {
   return (
     <main className="w-full min-h-screen relative">
-      <AnimatedGlow />
+      <CursorGlow />
       <div className="mx-auto max-w-7xl px-4 sm:px-6  py-12 relative z-10">
         <Link
           href="/"

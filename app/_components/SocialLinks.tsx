@@ -1,7 +1,7 @@
 import React from 'react';
 import { FacebookIcon, GithubIcon, LinkedinIcon } from "lucide-react";
 
-const SOCIAL_LINKS = [
+export const SOCIAL_LINKS = [
   { label: "GitHub", url: "https://github.com/robwilsoncaldosa", Icon: GithubIcon },
   { label: "LinkedIn", url: "https://www.linkedin.com/in/rob-wilson-caldosa-25a6292b1/", Icon: LinkedinIcon },
   { label: "Facebook", url: "https://www.facebook.com/robwilson.caldoza", Icon: FacebookIcon },

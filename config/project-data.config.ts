@@ -41,6 +41,8 @@ export interface ProjectConfig {
     name: string;
     madeAt: string;
     description: string;
+    /** One-line result statement shown as a highlighted callout above the description. */
+    outcome?: string;
     skills: string[];
     href?: string;
     imageSrc: string;
@@ -80,7 +82,9 @@ const RAW_PROJECTS: ProjectConfig[] = [
         name: "Barangay Konek",
         madeAt: "",
         description:
-            "Barangay Konek streamlines resident services, certificates, and operations with online requests, real-time tracking, chat support, and role-based dashboards.",
+            "Barangay offices were running resident requests, certificate processing, and staff coordination through walk-ins and paper trails. I designed a single web platform with online request intake, real-time status tracking, in-app chat support, and role-based dashboards so residents and staff share one source of truth instead of duplicate manual logs.",
+        outcome:
+            "Replaced a paper-and-walk-in process with one system residents and staff both use to track requests end-to-end.",
         skills: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Shadcn UI"],
         href: "https://barangay-konek-vercel.app",
         imageSrc: "/barangay-konek-landing-page.png",
@@ -106,7 +110,9 @@ const RAW_PROJECTS: ProjectConfig[] = [
         name: "LinkHaus",
         madeAt: "",
         description:
-            "LinkHaus empowers creators to monetize content, grow their brand, and get paid from a single bio link, while giving brands instant visibility through seamless native ad placements across top creators’ pages.",
+            "Creators typically juggle separate tools for a link-in-bio page, brand deals, and payouts. I built LinkHaus on the T3 stack with Prisma and Supabase so a creator's page, native ad placements, and payout flow all live in one system instead of being stitched together from third-party tools.",
+        outcome:
+            "Consolidated link-in-bio, native ad placement, and creator payouts into a single T3/Supabase-backed platform.",
         skills: [
             "Next.js",
             "React",
@@ -139,7 +145,9 @@ const RAW_PROJECTS: ProjectConfig[] = [
         name: "Net Notify",
         madeAt: "",
         description:
-            "Automated monthly billing SMS notifications with personalized templates and delivery tracking.",
+            "Monthly billing reminders were sent by manually copying customer details into individual text messages. I built an automation layer that merges customer data into personalized SMS templates on a schedule and tracks delivery status per message.",
+        outcome:
+            "Turned a manual, one-by-one texting process into a scheduled, template-driven send with per-message delivery tracking.",
         skills: [
             "Next.js",
             "TypeScript",

@@ -16,104 +16,98 @@ h4 {
 @layer base {
   :root {
     /*
-      Apple Human Interface Guidelines — Dark Mode
+      Chiang-Inspired Navy + Mint — the direct-inspiration palette
       ─────────────────────────────────────────────
-      Surface hierarchy (macOS NSColor equivalents):
-        #1c1c1e  windowBackgroundColor          → --background / --primary
-        #2c2c2e  secondarySystemBackground      → --card
-        #3a3a3c  tertiarySystemBackground       → --muted / --input
-        #48484a  quaternarySystemBackground     → --accent
+      Dark navy surfaces with a punchy mint accent, in the spirit of
+      brittanychiang.com (credited in CreditSection). No pointer-
+      tracking glow — the background stays flat and still; hover
+      states alone carry the interactivity.
 
-      Label hierarchy (macOS NSColor label):
-        #f5f5f7  label (primary)                → --foreground
-        #aeaeb2  secondaryLabel                 → --secondary
-        #636366  tertiaryLabel / placeholderText→ --muted-foreground
-        #3a3a3c  quaternaryLabel (dividers)     → --border
+      Surface hierarchy:
+        #0a0f18  base canvas                    → --background / --primary
+        #0f1520  card / elevated surface         → --card
+        #141b28  tertiary surface                → --muted / --input
+        #1a2333  quaternary surface               → --accent
 
-      Apple system colors (dark):
-        #0A84FF  systemBlue                     → --ring / --chart-1
-        #30D158  systemGreen                    → --chart-2
-        #5AC8FA  systemTeal                     → --chart-3
-        #5E5CE6  systemIndigo                   → --chart-4
-        #BF5AF2  systemPurple                   → --chart-5
-        #FF453A  systemRed                      → --destructive
+      Text hierarchy:
+        #e6ebf2  primary text                    → --foreground
+        #8892a6  secondary text                   → --secondary
+        #626b80  muted / placeholder text         → --muted-foreground
+        #141b28  dividers                         → --border
+
+      Accent:
+        #5eead4  mint (Tailwind teal-300)         → --ring / --chart-1
     */
 
-    --background: 240 4% 11%;
-    --foreground: 300 3% 96%;
-    --card: 240 3% 17%;
-    --card-foreground: 300 3% 96%;
-    --popover: 240 4% 14%;
-    --popover-foreground: 300 3% 96%;
-    --primary: 240 4% 11%;
-    --primary-foreground: 300 3% 96%;
-    --secondary: 240 2% 68%;
-    --secondary-foreground: 300 3% 96%;
-    --muted: 240 3% 23%;
-    --muted-foreground: 240 2% 39%;
-    --accent: 240 2% 29%;
-    --accent-foreground: 300 3% 96%;
-    --destructive: 3 100% 60%;
+    --background: 219 41% 7%;
+    --foreground: 217 20% 90%;
+    --card: 219 36% 9%;
+    --card-foreground: 217 20% 90%;
+    --popover: 219 37% 8%;
+    --popover-foreground: 217 20% 90%;
+    --primary: 219 41% 7%;
+    --primary-foreground: 217 20% 90%;
+    --secondary: 220 14% 59%;
+    --secondary-foreground: 217 20% 90%;
+    --muted: 219 25% 16%;
+    --muted-foreground: 219 15% 46%;
+    --accent: 219 22% 20%;
+    --accent-foreground: 217 20% 90%;
+    --destructive: 0 72% 55%;
     --destructive-foreground: 0 0% 100%;
-    --border: 240 3% 23%;
-    --input: 240 3% 23%;
-    --ring: 211 100% 51%;
-    --chart-1: 211 100% 51%;
-    --chart-2: 142 60% 51%;
-    --chart-3: 199 94% 67%;
-    --chart-4: 242 77% 63%;
-    --chart-5: 287 86% 65%;
+    --border: 219 25% 18%;
+    --input: 219 25% 18%;
+    --ring: 171 77% 64%;
+    --chart-1: 171 77% 64%;
+    --chart-2: 190 80% 55%;
+    --chart-3: 160 70% 55%;
+    --chart-4: 200 75% 60%;
+    --chart-5: 150 60% 60%;
     --radius: 0.625rem;
 
-    --card-opacity: 1;
-    --glow-primary-rgb: 10, 132, 255;
-    --glow-secondary-rgb: 44, 44, 46;
-    --glow-tertiary-rgb: 28, 28, 30;
-    --texture-rgb: 245, 245, 247;
-    --page-gradient-top: #232325;
-    --page-gradient-mid: #1c1c1e;
-    --page-gradient-bottom: #161618;
-    --page-gradient-accent-start: rgba(10, 132, 255, 0.05);
-    --page-gradient-accent-mid: rgba(10, 132, 255, 0.025);
-    --page-gradient-accent-end: rgba(28, 28, 30, 0.0);
+    --card-opacity: 0.5;
+    --glow-primary-rgb: 94, 234, 212;
+    --page-gradient-top: #10192a;
+    --page-gradient-mid: #0a0f18;
+    --page-gradient-bottom: #060a10;
+    --page-gradient-accent-start: rgba(94, 234, 212, 0.05);
+    --page-gradient-accent-mid: rgba(94, 234, 212, 0.025);
+    --page-gradient-accent-end: rgba(10, 15, 24, 0.0);
   }
 
   .dark {
-    --background: 240 4% 11%;
-    --foreground: 300 3% 96%;
-    --card: 240 3% 17%;
-    --card-foreground: 300 3% 96%;
-    --popover: 240 4% 14%;
-    --popover-foreground: 300 3% 96%;
-    --primary: 240 4% 11%;
-    --primary-foreground: 300 3% 96%;
-    --secondary: 240 2% 68%;
-    --secondary-foreground: 300 3% 96%;
-    --muted: 240 3% 23%;
-    --muted-foreground: 240 2% 39%;
-    --accent: 240 2% 29%;
-    --accent-foreground: 300 3% 96%;
-    --destructive: 3 100% 60%;
+    --background: 219 41% 7%;
+    --foreground: 217 20% 90%;
+    --card: 219 36% 9%;
+    --card-foreground: 217 20% 90%;
+    --popover: 219 37% 8%;
+    --popover-foreground: 217 20% 90%;
+    --primary: 219 41% 7%;
+    --primary-foreground: 217 20% 90%;
+    --secondary: 220 14% 59%;
+    --secondary-foreground: 217 20% 90%;
+    --muted: 219 25% 16%;
+    --muted-foreground: 219 15% 46%;
+    --accent: 219 22% 20%;
+    --accent-foreground: 217 20% 90%;
+    --destructive: 0 72% 55%;
     --destructive-foreground: 0 0% 100%;
-    --border: 240 3% 23%;
-    --input: 240 3% 23%;
-    --ring: 211 100% 51%;
-    --chart-1: 211 100% 51%;
-    --chart-2: 142 60% 51%;
-    --chart-3: 199 94% 67%;
-    --chart-4: 242 77% 63%;
-    --chart-5: 287 86% 65%;
-    --card-opacity: 1;
-    --glow-primary-rgb: 10, 132, 255;
-    --glow-secondary-rgb: 44, 44, 46;
-    --glow-tertiary-rgb: 28, 28, 30;
-    --texture-rgb: 245, 245, 247;
-    --page-gradient-top: #232325;
-    --page-gradient-mid: #1c1c1e;
-    --page-gradient-bottom: #161618;
-    --page-gradient-accent-start: rgba(10, 132, 255, 0.05);
-    --page-gradient-accent-mid: rgba(10, 132, 255, 0.025);
-    --page-gradient-accent-end: rgba(28, 28, 30, 0.0);
+    --border: 219 25% 18%;
+    --input: 219 25% 18%;
+    --ring: 171 77% 64%;
+    --chart-1: 171 77% 64%;
+    --chart-2: 190 80% 55%;
+    --chart-3: 160 70% 55%;
+    --chart-4: 200 75% 60%;
+    --chart-5: 150 60% 60%;
+    --card-opacity: 0.5;
+    --glow-primary-rgb: 94, 234, 212;
+    --page-gradient-top: #10192a;
+    --page-gradient-mid: #0a0f18;
+    --page-gradient-bottom: #060a10;
+    --page-gradient-accent-start: rgba(94, 234, 212, 0.05);
+    --page-gradient-accent-mid: rgba(94, 234, 212, 0.025);
+    --page-gradient-accent-end: rgba(10, 15, 24, 0.0);
   }
 }
 
@@ -131,7 +125,7 @@ h4 {
     background-color: hsl(var(--primary));
     background-image:
       radial-gradient(ellipse 80% 40% at 50% 0%,
-        rgba(10, 132, 255, 0.05) 0%,
+        rgba(var(--glow-primary-rgb), 0.05) 0%,
         transparent 100%),
       linear-gradient(180deg,
         var(--page-gradient-top) 0%,
@@ -165,8 +159,8 @@ h4 {
   }
 
   ::selection {
-    background: rgba(10, 132, 255, 0.3);
-    color: #f5f5f7;
+    background: rgba(94, 234, 212, 0.3);
+    color: #e6ebf2;
   }
 
   hr {
@@ -175,9 +169,71 @@ h4 {
   }
 
   :focus-visible {
-    outline: 2px solid rgba(10, 132, 255, 0.8);
+    outline: 2px solid rgba(94, 234, 212, 0.8);
     outline-offset: 2px;
     border-radius: var(--radius);
+  }
+}
+
+@layer utilities {
+  /* Scroll-triggered entrance for cards further down the page. */
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 900ms cubic-bezier(0.23, 1, 0.32, 1),
+      transform 900ms cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: transform, opacity;
+  }
+
+  .reveal-on-scroll[data-visible="true"] {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Staggered fade-up for the hero column on first paint. */
+  @keyframes fade-up-in {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-stagger>* {
+    opacity: 0;
+    animation: fade-up-in 900ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+
+  .hero-stagger>*:nth-child(1) {
+    animation-delay: 100ms;
+  }
+
+  .hero-stagger>*:nth-child(2) {
+    animation-delay: 280ms;
+  }
+
+  .hero-stagger>*:nth-child(3) {
+    animation-delay: 460ms;
+  }
+
+  .hero-stagger>*:nth-child(4) {
+    animation-delay: 640ms;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+
+    .reveal-on-scroll,
+    .hero-stagger>* {
+      animation: none !important;
+      transition: opacity 300ms ease !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
   }
 }
 
