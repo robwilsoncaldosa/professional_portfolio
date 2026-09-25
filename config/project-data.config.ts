@@ -92,19 +92,6 @@ const RAW_PROJECTS: ProjectConfig[] = [
         isFeatured: true,
     },
     {
-        id: "borak",
-        year: 2025,
-        name: "Borak",
-        madeAt: "",
-        description:
-            "Borak offers curated Cebu tour packages with van services, showcasing famous tourist spots and providing seamless booking for an unforgettable island experience.",
-        skills: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Shadcn UI"],
-        href: "https://borak.vercel.app",
-        imageSrc: "/borak-landing-page.png",
-        imageAlt: "Borak landing page",
-        isFeatured: true,
-    },
-    {
         id: "linkhaus",
         year: 2025,
         name: "LinkHaus",
@@ -127,19 +114,6 @@ const RAW_PROJECTS: ProjectConfig[] = [
         isFeatured: true,
     },
     {
-        id: "aliplace",
-        year: 2025,
-        name: "AliPlace",
-        madeAt: "",
-        description:
-            "AliPlace helps people find their perfect property with interactive maps, detailed listings, and intuitive search filters, making it easy to explore neighborhoods and discover homes or investments that truly fit their lifestyle.",
-        skills: ["Next.js", "React", "Tailwind CSS"],
-        href: "https://aliplace.vercel.app/",
-        imageSrc: "/aliplace-landing-page.webp",
-        imageAlt: "AliPlace landing page",
-        isFeatured: true,
-    },
-    {
         id: "net-notify",
         year: 2025,
         name: "Net Notify",
@@ -158,6 +132,32 @@ const RAW_PROJECTS: ProjectConfig[] = [
         ],
         imageSrc: "/net-notify-landing-page.png",
         imageAlt: "Net Notify landing page",
+        isFeatured: true,
+    },
+    {
+        id: "borak",
+        year: 2025,
+        name: "Borak",
+        madeAt: "",
+        description:
+            "Borak offers curated Cebu tour packages with van services, showcasing famous tourist spots and providing seamless booking for an unforgettable island experience.",
+        skills: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Shadcn UI"],
+        href: "https://borak.vercel.app",
+        imageSrc: "/borak-landing-page.png",
+        imageAlt: "Borak landing page",
+        isFeatured: true,
+    },
+    {
+        id: "aliplace",
+        year: 2025,
+        name: "AliPlace",
+        madeAt: "",
+        description:
+            "AliPlace helps people find their perfect property with interactive maps, detailed listings, and intuitive search filters, making it easy to explore neighborhoods and discover homes or investments that truly fit their lifestyle.",
+        skills: ["Next.js", "React", "Tailwind CSS"],
+        href: "https://aliplace.vercel.app/",
+        imageSrc: "/aliplace-landing-page.webp",
+        imageAlt: "AliPlace landing page",
         isFeatured: true,
     },
     {
