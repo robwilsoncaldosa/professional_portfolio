@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { motion, useMotionTemplate, useMotionValue, useSpring } from 'motion/react';
+import { motion, useMotionTemplate, useSpring } from 'motion/react';
 
 interface ProjectImageTiltProps {
   imageSrc?: string;
