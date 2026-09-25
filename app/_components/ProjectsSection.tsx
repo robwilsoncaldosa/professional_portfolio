@@ -19,6 +19,7 @@ const ProjectsSection: React.FC = () => {
               href={project.href}
               imageSrc={project.imageSrc}
               imageAlt={project.imageAlt}
+              featured={project.isSpotlight}
             />
           </ScrollReveal>
         ))}

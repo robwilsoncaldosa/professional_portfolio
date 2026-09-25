@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://robwilsoncaldosa.vercel.app";
 const SITE_TITLE = "Rob Wilson Caldosa — Senior Software Developer";
 const SITE_DESCRIPTION =
-  "Senior Software Developer portfolio featuring React, Next.js, Node.js, Docker, and Google Cloud Platform work.";
+  "Senior Software Developer in Cebu building dependable web applications with React, Next.js, Node.js, and Google Cloud. Google Cloud certified Generative AI Leader who works with AI, not through it.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -32,6 +32,10 @@ export const metadata: Metadata = {
     "React",
     "Next.js",
     "Node.js",
+    "Google Cloud",
+    "Generative AI",
+    "AI-assisted development",
+    "Cebu",
     "Portfolio",
   ],
   authors: [{ name: "Rob Wilson Caldosa" }],

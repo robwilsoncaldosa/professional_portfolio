@@ -331,9 +331,63 @@ export const THEME_PALETTES: ThemePalette[] = [
     },
   },
   {
+    id: "gunmetal-steel",
+    name: "Gunmetal + Steel Blue",
+    tagline: "Charcoal gunmetal canvas, a deep steel-blue spotlight, and a cool steel accent. Engineered, confident, and quiet. Currently live.",
+    category: "premium",
+    swatch: { background: "#0e1114", card: "#14181d", accent: "#8db4d9" },
+    vars: {
+      background: "210 18% 7%",
+      foreground: "210 20% 92%",
+      card: "210 16% 10%",
+      popover: "210 16% 9%",
+      secondary: "210 10% 64%",
+      muted: "210 14% 15%",
+      mutedForeground: "210 8% 47%",
+      accentSurface: "210 13% 19%",
+      border: "210 13% 17%",
+      ring: "209 50% 70%",
+      chart2: "205 45% 60%",
+      chart3: "215 35% 66%",
+      chart4: "198 40% 58%",
+      chart5: "220 30% 72%",
+      glowPrimaryRgb: "38, 84, 140",
+      pageGradientTop: "#12171d",
+      pageGradientMid: "#0e1114",
+      pageGradientBottom: "#0a0c0f",
+    },
+  },
+  {
+    id: "ink-indigo",
+    name: "Ink + Indigo",
+    tagline: "Deep ink canvas lit by an indigo spotlight, with a soft periwinkle accent. The trust of navy, without borrowing anyone's teal.",
+    category: "premium",
+    swatch: { background: "#0b0d17", card: "#111421", accent: "#a5b4fc" },
+    vars: {
+      background: "232 35% 7%",
+      foreground: "228 33% 93%",
+      card: "232 32% 10%",
+      popover: "232 32% 9%",
+      secondary: "228 14% 66%",
+      muted: "232 24% 15%",
+      mutedForeground: "228 12% 48%",
+      accentSurface: "232 22% 19%",
+      border: "232 22% 17%",
+      ring: "230 94% 82%",
+      chart2: "239 84% 74%",
+      chart3: "250 90% 82%",
+      chart4: "217 91% 76%",
+      chart5: "262 83% 80%",
+      glowPrimaryRgb: "79, 70, 229",
+      pageGradientTop: "#10132a",
+      pageGradientMid: "#0b0d17",
+      pageGradientBottom: "#080910",
+    },
+  },
+  {
     id: "midnight-platinum",
     name: "Midnight Navy + Platinum",
-    tagline: "Navy signals authority and trust (banks, law, consulting); platinum adds quiet polish without adding a hue. Currently live.",
+    tagline: "Navy signals authority and trust (banks, law, consulting); platinum adds quiet polish without adding a hue.",
     category: "premium",
     swatch: { background: "#0c1017", card: "#131823", accent: "#c9d1dc" },
     vars: {
@@ -851,13 +905,13 @@ export const THEME_PALETTES: ThemePalette[] = [
   },
 ];
 
-export const DEFAULT_PALETTE_ID = "midnight-platinum";
+export const DEFAULT_PALETTE_ID = "ink-indigo";
 
-export const THEME_STORAGE_KEY = "portfolio-theme-vars";
-export const THEME_PALETTE_ID_STORAGE_KEY = "portfolio-theme-palette-id";
+export const THEME_STORAGE_KEY = "portfolio-theme-vars-v3";
+export const THEME_PALETTE_ID_STORAGE_KEY = "portfolio-theme-palette-id-v3";
 /** Same id as the localStorage key, mirrored into a cookie so server-rendered
  * files (the favicon) can read the visitor's chosen palette too. */
-export const THEME_COOKIE_NAME = "portfolio-theme-palette-id";
+export const THEME_COOKIE_NAME = "portfolio-theme-palette-id-v3";
 
 export function getPaletteById(id: string | null | undefined): ThemePalette {
   return (

@@ -9,6 +9,7 @@ const CREDIT_LINKS: CreditLink[] = [
     { label: 'Tailwind CSS', url: 'https://tailwindcss.com/' },
     { label: 'Vercel', url: 'https://vercel.com/' },
     { label: 'Geist', url: 'https://vercel.com/font' },
+    { label: 'Claude Code', url: 'https://claude.com/claude-code' },
 ];
 
 function CreditLink({ label, url }: CreditLink) {
@@ -29,10 +30,11 @@ function CreditLink({ label, url }: CreditLink) {
 export default function CreditSection() {
     return (
         <p className="max-w-lg text-sm px-6 mt-6 text-pretty transition-colors duration-300 has-[a:hover]:text-muted-foreground has-[a:hover]:[&_a]:text-foreground">
-            Design greatly inspired by <CreditLink {...CREDIT_LINKS[0]} /> and coded from scratch by yours
-            truly. Built with <CreditLink {...CREDIT_LINKS[1]} /> and{' '}
-            <CreditLink {...CREDIT_LINKS[2]} />, deployed with <CreditLink {...CREDIT_LINKS[3]} />. All
-            text is set in the <CreditLink {...CREDIT_LINKS[4]} /> typeface.
+            Design greatly inspired by <CreditLink {...CREDIT_LINKS[0]} /> and coded by yours truly,
+            with <CreditLink {...CREDIT_LINKS[5]} /> as a pair programmer. Built with{' '}
+            <CreditLink {...CREDIT_LINKS[1]} /> and <CreditLink {...CREDIT_LINKS[2]} />, deployed with{' '}
+            <CreditLink {...CREDIT_LINKS[3]} />. All text is set in the <CreditLink {...CREDIT_LINKS[4]} />{' '}
+            typeface.
         </p>
     );
 }

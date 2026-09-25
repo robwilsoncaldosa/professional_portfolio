@@ -39,9 +39,14 @@ export interface ExperienceChangelogEntry {
   summary: string;
 }
 
-export const EXPERIENCE_DATA_VERSION = "1.3.0";
+export const EXPERIENCE_DATA_VERSION = "1.4.0";
 
 export const EXPERIENCE_DATA_CHANGELOG: readonly ExperienceChangelogEntry[] = [
+  {
+    version: "1.4.0",
+    date: "2026-09-26",
+    summary: "Added AI-assisted development to the M Lhuillier entry.",
+  },
   {
     version: "1.3.0",
     date: "2026-04-19",
@@ -76,7 +81,7 @@ const RAW_EXPERIENCES: ExperienceConfig[] = [
     location:
       "Cebu City, Cebu, Philippines",
     description:
-      "Build and maintain financial services applications that support internal teams and customer-facing operations with a strong focus on reliability, maintainability, and delivery quality.",
+      "Build and maintain financial services applications that support internal teams and customer-facing operations, with a strong focus on reliability, maintainability, and delivery quality. Work daily with AI coding agents such as Claude Code, Gemini CLI, and Codex for codebase exploration, refactoring, and test drafting, with human review on every change.",
     caption:
       "Developing dependable software that keeps critical financial operations efficient, stable, and ready to scale.",
     skills: [
@@ -86,6 +91,7 @@ const RAW_EXPERIENCES: ExperienceConfig[] = [
       "Docker",
       "Google Cloud Platform",
       "Cloud Run",
+      "AI-Assisted Development",
     ],
     brandColor: "#FF0000",
     logoSrc: "/logos/mlhuillier.png",

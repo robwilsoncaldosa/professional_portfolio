@@ -45,6 +45,8 @@ export interface ProjectConfig {
     outcome?: string;
     /** Recognition the project received, shown with a trophy above the outcome. */
     award?: string;
+    /** Rendered as a larger card (full-width image) on the home page. */
+    isSpotlight?: boolean;
     skills: string[];
     href?: string;
     imageSrc: string;
@@ -84,10 +86,11 @@ const RAW_PROJECTS: ProjectConfig[] = [
         name: "Barangay Konek",
         madeAt: "Hacktoberfest Cebu",
         description:
-            "Barangay offices were running resident requests, certificate processing, and staff coordination through walk-ins and paper trails. I designed a single web platform with online request intake, real-time status tracking, in-app chat support, and role-based dashboards so residents and staff share one source of truth instead of duplicate manual logs.",
+            "Barangay offices ran resident requests, certificate processing, and staff coordination through walk-ins and paper logs. I designed one web platform with online request intake, real-time status tracking, in-app chat, and role-based dashboards, so residents and staff finally share a single source of truth.",
         outcome:
-            "Replaced a paper-and-walk-in process with one system residents and staff both use to track requests end-to-end.",
+            "Turned a paper-and-walk-in process into one system residents and staff both use to track requests end to end.",
         award: "Best Use of Blockchain · Hacktoberfest Cebu 2025",
+        isSpotlight: true,
         skills: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Shadcn UI", "Blockchain"],
         href: "https://barangay-konek.vercel.app",
         imageSrc: "/barangay-konek-landing-page.png",

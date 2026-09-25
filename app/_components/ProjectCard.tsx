@@ -1,5 +1,4 @@
 import React from 'react';
-import { TrophyIcon } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -9,6 +8,7 @@ import {
 } from "@/components/ui/card";
 import HeadingWithSubtext from "@/components/shared/heading-with-subtext";
 import ProjectImageTilt from "./ProjectImageTilt";
+import AwardBadge from "./AwardBadge";
 
 interface ProjectCardProps {
   period?: string;
@@ -20,6 +20,8 @@ interface ProjectCardProps {
   href?: string;
   imageSrc?: string;
   imageAlt?: string;
+  /** Same card, bigger: the image spans the full width above the text. */
+  featured?: boolean;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -32,7 +34,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   href,
   imageSrc,
   imageAlt,
+  featured = false,
 }) => {
+  const [awardLabel, awardEvent] = (award ?? '').split(' · ');
+
   return (
     <Card
       tabIndex={0}
@@ -55,7 +60,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           </CardTitle>
         )}
 
-        <div className="flex flex-col md:grid md:grid-cols-[200px,1fr] items-start gap-4">
+        <div className={`flex flex-col items-start gap-4 ${featured ? '' : 'md:grid md:grid-cols-[200px,1fr]'}`}>
           <ProjectImageTilt imageSrc={imageSrc} imageAlt={imageAlt} title={title} />
           <div>
             <CardDescription>
@@ -63,9 +68,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </CardDescription>
             <CardContent className="px-0 text-sm">
               {award && (
-                <p className="mt-2 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-foreground">
-                  <TrophyIcon className="h-3.5 w-3.5 shrink-0 text-ring" aria-hidden />
-                  {award}
+                <p className="mt-2">
+                  <AwardBadge label={awardLabel} event={awardEvent} />
                 </p>
               )}
               {outcome && (
@@ -73,7 +77,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                   {outcome}
                 </p>
               )}
-              <p className="mt-2 font-normal">{description}</p>
+              <p className={`mt-2 font-normal ${featured ? 'text-base' : ''}`}>{description}</p>
               <div className="flex gap-1 flex-wrap gap-y-2">
                 {skills.map((skill, index) => (
                   <Badge key={index}>

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import SocialLinks from './SocialLinks';
 import ContactCTA from './ContactCTA';
+import { Sparkles } from 'lucide-react';
 
 // Navigation configuration - easy to maintain and extend
 const NAVIGATION_SECTIONS = [
@@ -67,7 +68,11 @@ const ProfileHeader: React.FC = () => {
           Senior Software Developer
         </span>
         <p className="mt-4 text-secondary max-w-sm">
-          I design and plan ahead, from thoughtful UI and UX to better developer experience and systems that scale and perform well.
+          I build dependable, human-centered software, and I use AI to ship it faster without handing it the judgment.
+        </p>
+        <p className="mt-4 mb-0 flex items-center gap-2 text-sm text-secondary">
+          <Sparkles className="h-3.5 w-3.5 shrink-0 text-ring" aria-hidden />
+          Google Cloud Generative AI Leader
         </p>
       </div>
 
