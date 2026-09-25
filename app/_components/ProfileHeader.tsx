@@ -54,7 +54,7 @@ const ProfileHeader: React.FC = () => {
 
   return (
     <section
-      title="left-section"
+      aria-label="left-section"
       className="hero-stagger md:flex md:flex-col text-foreground px-6 md:px-0 md:max-h-screen md:py-24 md:sticky top-0"
     >
       {/* Header Section */}

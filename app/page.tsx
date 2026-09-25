@@ -32,7 +32,7 @@ export default function Home() {
       <CursorGlow />
       <div className="grid md:grid-cols-[42%_58%] mx-auto min-h-screen prose md:max-w-screen-xl prose-headings:text-foreground py-12 sm:py-0 relative z-10">
         <ProfileHeader />
-        <section title="right-section" className="text-secondary md:py-24">
+        <section aria-label="right-section" className="text-secondary md:py-24">
           <AboutSection />
           <ExperienceSection />
           <ResumeButton />
