@@ -277,3 +277,41 @@ h4 {
     background-attachment: scroll;
   }
 }
+
+/* ─── Page transitions ──────────────────────────────────────────────
+   Driven by React's <ViewTransition> in app/template.tsx. The old page
+   leaves fast so it never competes for attention; the new one waits for
+   it, then rises in gently. */
+::view-transition {
+  /* Keep clicks landing on the live page while a transition runs. */
+  pointer-events: none;
+}
+
+::view-transition-old(.page-exit) {
+  animation: page-leave 140ms ease-out both;
+}
+
+::view-transition-new(.page-enter) {
+  animation: page-arrive 320ms cubic-bezier(0.23, 1, 0.32, 1) 100ms both;
+}
+
+@keyframes page-leave {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes page-arrive {
+  from {
+    opacity: 0;
+    filter: blur(2px);
+    translate: 0 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Same crossfade, no movement. */
+  ::view-transition-new(.page-enter) {
+    animation: page-leave 180ms ease-out reverse both;
+  }
+}
