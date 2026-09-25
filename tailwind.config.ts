@@ -10,6 +10,10 @@ export default {
   ],
   theme: {
     extend: {
+      transitionTimingFunction: {
+        // Strong ease-out for UI feedback (Emil Kowalski)
+        "out-strong": "cubic-bezier(0.23, 1, 0.32, 1)",
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

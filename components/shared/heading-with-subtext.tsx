@@ -13,14 +13,14 @@ function HeadingWithSubtext({
   return (
     <>
       <h3 className="mt-0 mb-0 flex items-center gap-2 w-fit">
-        <strong className="text-foreground relative mb-0 font-extrabold text-nowrap">
+        <strong className="text-foreground relative mb-0 font-extrabold text-nowrap transition-colors duration-300 ease-out">
           {title}
-          <span className="absolute -bottom-[.2px] left-0 w-full h-[1px] bg-foreground origin-bottom-right scale-x-0 transition-transform duration-300 ease-in-out group-hover/card:origin-bottom-left group-hover/card:scale-x-100"></span>
+          <span className="absolute -bottom-[.2px] left-0 w-full h-[1px] bg-foreground origin-bottom-right scale-x-0 transition-[transform,background-color] duration-300 ease-in-out group-hover/card:origin-bottom-left group-hover/card:scale-x-100"></span>
         </strong>
-        <ArrowRight className="w-4 h-4 text-foreground transition-transform duration-300 ease-in-out group-hover/card:translate-x-2" />
+        <ArrowRight className="w-4 h-4 text-foreground transition-[transform,color] duration-300 ease-in-out group-hover/card:translate-x-2" />
       </h3>
       {subtitle && (
-        <span className="mt-1 block text-secondary text-sm font-semibold">
+        <span className="mt-1 block text-secondary text-sm font-semibold transition-colors duration-300 ease-out">
           {subtitle}
         </span>
       )}

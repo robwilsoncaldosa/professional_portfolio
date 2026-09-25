@@ -1,9 +1,14 @@
 import { ImageResponse } from 'next/og';
+import { cookies } from 'next/headers';
+import { THEME_COOKIE_NAME, getPaletteById } from '@/config/theme-palettes.config';
 
 export const size = { width: 32, height: 32 };
 export const contentType = 'image/png';
 
-export default function Icon() {
+export default async function Icon() {
+  const cookieStore = await cookies();
+  const palette = getPaletteById(cookieStore.get(THEME_COOKIE_NAME)?.value);
+
   return new ImageResponse(
     (
       <div
@@ -13,7 +18,7 @@ export default function Icon() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          background: '#0a0f18',
+          background: palette.swatch.background,
           borderRadius: 7,
         }}
       >
@@ -21,7 +26,7 @@ export default function Icon() {
           style={{
             fontSize: 20,
             fontWeight: 800,
-            color: '#5eead4',
+            color: palette.swatch.accent,
             fontFamily: 'sans-serif',
           }}
         >

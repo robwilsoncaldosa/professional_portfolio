@@ -1,9 +1,11 @@
 'use client'
 import React, { useEffect, useRef } from 'react';
 
-const GLOW_SIZE = 640;
+// A 600px pool of the palette's accent light that trails the pointer —
+// the same spotlight idea as brittanychiang.com, eased so it glides.
+const GLOW_SIZE = 1200;
 const HALF_SIZE = GLOW_SIZE / 2;
-const EASE = 0.08;
+const EASE = 0.12;
 
 const CursorGlow: React.FC = () => {
   const glowRef = useRef<HTMLDivElement>(null);
@@ -19,6 +21,9 @@ const CursorGlow: React.FC = () => {
     target.current = { x: window.innerWidth * 0.5, y: window.innerHeight * 0.3 };
     current.current = { ...target.current };
 
+    const node = glowRef.current;
+    if (node) node.style.opacity = '1';
+
     const handlePointerMove = (event: PointerEvent) => {
       target.current = { x: event.clientX, y: event.clientY };
     };
@@ -27,7 +32,6 @@ const CursorGlow: React.FC = () => {
       current.current.x += (target.current.x - current.current.x) * EASE;
       current.current.y += (target.current.y - current.current.y) * EASE;
 
-      const node = glowRef.current;
       if (node) {
         node.style.transform = `translate3d(${current.current.x - HALF_SIZE}px, ${
           current.current.y - HALF_SIZE
@@ -50,13 +54,12 @@ const CursorGlow: React.FC = () => {
     <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
       <div
         ref={glowRef}
-        className="absolute left-0 top-0 will-change-transform"
+        className="absolute left-0 top-0 opacity-0 transition-opacity duration-700 ease-out will-change-transform"
         style={{
           width: GLOW_SIZE,
           height: GLOW_SIZE,
-          background: 'radial-gradient(circle, rgba(var(--glow-primary-rgb), 0.06), transparent 70%)',
-          filter: 'blur(50px)',
-          mixBlendMode: 'lighten',
+          background:
+            'radial-gradient(600px circle at center, rgba(var(--glow-primary-rgb), 0.11), transparent 80%)',
         }}
       />
     </div>

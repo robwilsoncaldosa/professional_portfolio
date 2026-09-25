@@ -2,6 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Typed as <color> so the browser can smoothly interpolate them (used by
+   the body background gradient below) instead of snapping instantly when
+   a theme or company-hover preview swaps the palette. */
+@property --page-gradient-top {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #1c1a17;
+}
+
+@property --page-gradient-mid {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #141312;
+}
+
+@property --page-gradient-bottom {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #0f0e0d;
+}
+
+/* Soft corner light derived from the active palette's accent (--ring).
+   Registered as <color> for the same reason as above: palette swaps fade
+   instead of snapping. */
+@property --page-glow {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
+
 body {
   font-family: -apple-system, "SF Pro Text", "SF Pro Display", "Helvetica Neue", sans-serif;
   min-height: 100vh;
@@ -16,98 +46,100 @@ h4 {
 @layer base {
   :root {
     /*
-      Chiang-Inspired Navy + Mint — the direct-inspiration palette
+      Warm Minimal Graphite — Emil Kowalski-style restraint
       ─────────────────────────────────────────────
-      Dark navy surfaces with a punchy mint accent, in the spirit of
-      brittanychiang.com (credited in CreditSection). No pointer-
-      tracking glow — the background stays flat and still; hover
-      states alone carry the interactivity.
+      Warm near-black surfaces (no blue tint), a single warm amber accent
+      used sparingly for links, focus rings and glow. Quiet by default;
+      color only shows up where it means something (CTAs, active nav
+      state, hovers) — including the full-palette swap when hovering an
+      experience card, which temporarily replaces every token below with
+      that employer's own brand palette.
 
       Surface hierarchy:
-        #0a0f18  base canvas                    → --background / --primary
-        #0f1520  card / elevated surface         → --card
-        #141b28  tertiary surface                → --muted / --input
-        #1a2333  quaternary surface               → --accent
+        #141312  base canvas                    → --background / --primary
+        #1c1a18  card / elevated surface         → --card
+        #232019  tertiary surface                → --muted / --input
+        #2c2822  quaternary surface               → --accent
 
       Text hierarchy:
-        #e6ebf2  primary text                    → --foreground
-        #8892a6  secondary text                   → --secondary
-        #626b80  muted / placeholder text         → --muted-foreground
-        #141b28  dividers                         → --border
+        #f2ede6  primary text                    → --foreground
+        #a39c92  secondary text                   → --secondary
+        #746c62  muted / placeholder text         → --muted-foreground
+        #2c2822  dividers                         → --border
 
       Accent:
-        #5eead4  mint (Tailwind teal-300)         → --ring / --chart-1
+        #e8a33d  warm amber                       → --ring / --chart-1
     */
 
-    --background: 219 41% 7%;
-    --foreground: 217 20% 90%;
-    --card: 219 36% 9%;
-    --card-foreground: 217 20% 90%;
-    --popover: 219 37% 8%;
-    --popover-foreground: 217 20% 90%;
-    --primary: 219 41% 7%;
-    --primary-foreground: 217 20% 90%;
-    --secondary: 220 14% 59%;
-    --secondary-foreground: 217 20% 90%;
-    --muted: 219 25% 16%;
-    --muted-foreground: 219 15% 46%;
-    --accent: 219 22% 20%;
-    --accent-foreground: 217 20% 90%;
+    --background: 30 6% 8%;
+    --foreground: 40 24% 93%;
+    --card: 30 7% 11%;
+    --card-foreground: 40 24% 93%;
+    --popover: 30 7% 10%;
+    --popover-foreground: 40 24% 93%;
+    --primary: 30 6% 8%;
+    --primary-foreground: 40 24% 93%;
+    --secondary: 30 7% 62%;
+    --secondary-foreground: 40 24% 93%;
+    --muted: 30 8% 16%;
+    --muted-foreground: 30 6% 46%;
+    --accent: 30 9% 20%;
+    --accent-foreground: 40 24% 93%;
     --destructive: 0 72% 55%;
     --destructive-foreground: 0 0% 100%;
-    --border: 219 25% 18%;
-    --input: 219 25% 18%;
-    --ring: 171 77% 64%;
-    --chart-1: 171 77% 64%;
-    --chart-2: 190 80% 55%;
-    --chart-3: 160 70% 55%;
-    --chart-4: 200 75% 60%;
-    --chart-5: 150 60% 60%;
+    --border: 30 8% 18%;
+    --input: 30 8% 18%;
+    --ring: 36 78% 58%;
+    --chart-1: 36 78% 58%;
+    --chart-2: 15 65% 54%;
+    --chart-3: 45 85% 60%;
+    --chart-4: 25 55% 48%;
+    --chart-5: 50 65% 64%;
     --radius: 0.625rem;
 
     --card-opacity: 0.5;
-    --glow-primary-rgb: 94, 234, 212;
-    --page-gradient-top: #10192a;
-    --page-gradient-mid: #0a0f18;
-    --page-gradient-bottom: #060a10;
-    --page-gradient-accent-start: rgba(94, 234, 212, 0.05);
-    --page-gradient-accent-mid: rgba(94, 234, 212, 0.025);
-    --page-gradient-accent-end: rgba(10, 15, 24, 0.0);
+    --glow-primary-rgb: 232, 163, 61;
+    --page-gradient-top: #1c1a17;
+    --page-gradient-mid: #141312;
+    --page-gradient-bottom: #0f0e0d;
+    --page-gradient-accent-start: rgba(232, 163, 61, 0.05);
+    --page-gradient-accent-mid: rgba(232, 163, 61, 0.025);
+    --page-gradient-accent-end: rgba(15, 14, 13, 0.0);
   }
 
   .dark {
-    --background: 219 41% 7%;
-    --foreground: 217 20% 90%;
-    --card: 219 36% 9%;
-    --card-foreground: 217 20% 90%;
-    --popover: 219 37% 8%;
-    --popover-foreground: 217 20% 90%;
-    --primary: 219 41% 7%;
-    --primary-foreground: 217 20% 90%;
-    --secondary: 220 14% 59%;
-    --secondary-foreground: 217 20% 90%;
-    --muted: 219 25% 16%;
-    --muted-foreground: 219 15% 46%;
-    --accent: 219 22% 20%;
-    --accent-foreground: 217 20% 90%;
+    --background: 30 6% 8%;
+    --foreground: 40 24% 93%;
+    --card: 30 7% 11%;
+    --card-foreground: 40 24% 93%;
+    --popover: 30 7% 10%;
+    --popover-foreground: 40 24% 93%;
+    --primary: 30 6% 8%;
+    --primary-foreground: 40 24% 93%;
+    --secondary: 30 7% 62%;
+    --secondary-foreground: 40 24% 93%;
+    --muted: 30 8% 16%;
+    --muted-foreground: 30 6% 46%;
+    --accent: 30 9% 20%;
+    --accent-foreground: 40 24% 93%;
     --destructive: 0 72% 55%;
     --destructive-foreground: 0 0% 100%;
-    --border: 219 25% 18%;
-    --input: 219 25% 18%;
-    --ring: 171 77% 64%;
-    --chart-1: 171 77% 64%;
-    --chart-2: 190 80% 55%;
-    --chart-3: 160 70% 55%;
-    --chart-4: 200 75% 60%;
-    --chart-5: 150 60% 60%;
+    --border: 30 8% 18%;
+    --input: 30 8% 18%;
+    --ring: 36 78% 58%;
+    --chart-1: 36 78% 58%;
+    --chart-2: 15 65% 54%;
+    --chart-3: 45 85% 60%;
+    --chart-4: 25 55% 48%;
+    --chart-5: 50 65% 64%;
     --card-opacity: 0.5;
-    --glow-primary-rgb: 94, 234, 212;
-    --page-gradient-top: #10192a;
-    --page-gradient-mid: #0a0f18;
-    --page-gradient-bottom: #060a10;
-    --page-gradient-accent-start: rgba(94, 234, 212, 0.05);
-    --page-gradient-accent-mid: rgba(94, 234, 212, 0.025);
-    --page-gradient-accent-end: rgba(10, 15, 24, 0.0);
+    --glow-primary-rgb: 232, 163, 61;
+    --page-gradient-top: #1c1a17;
+    --page-gradient-mid: #141312;
+    --page-gradient-bottom: #0f0e0d;
+    --page-gradient-accent-start: rgba(232, 163, 61, 0.05);
+    --page-gradient-accent-mid: rgba(232, 163, 61, 0.025);
+    --page-gradient-accent-end: rgba(15, 14, 13, 0.0);
   }
 }
 
@@ -122,22 +154,20 @@ h4 {
 
   body {
     @apply bg-primary text-foreground;
-    background-color: hsl(var(--primary));
-    background-image:
-      radial-gradient(ellipse 80% 40% at 50% 0%,
-        rgba(var(--glow-primary-rgb), 0.05) 0%,
-        transparent 100%),
-      linear-gradient(180deg,
-        var(--page-gradient-top) 0%,
-        var(--page-gradient-mid) 40%,
-        var(--page-gradient-bottom) 100%);
+    --page-glow: hsl(var(--ring) / 0.08);
+    /* One solid canvas with a single soft light in the top-left corner —
+       the rest of the page stays a consistent, even tone. */
+    background-color: hsl(var(--background));
+    background-image: radial-gradient(ellipse 70% 60% at 0% 0%,
+        var(--page-glow) 0%,
+        transparent 70%);
     background-repeat: no-repeat;
-    background-size: 100% 100%;
     background-attachment: fixed;
     transition:
       background-color 250ms ease,
       color 250ms ease,
-      border-color 250ms ease;
+      border-color 250ms ease,
+      --page-glow 400ms ease;
     overflow-x: hidden;
   }
 
@@ -159,8 +189,8 @@ h4 {
   }
 
   ::selection {
-    background: rgba(94, 234, 212, 0.3);
-    color: #e6ebf2;
+    background: hsl(var(--ring) / 0.3);
+    color: hsl(var(--foreground));
   }
 
   hr {
@@ -169,26 +199,30 @@ h4 {
   }
 
   :focus-visible {
-    outline: 2px solid rgba(94, 234, 212, 0.8);
+    outline: 2px solid hsl(var(--ring) / 0.8);
     outline-offset: 2px;
     border-radius: var(--radius);
   }
 }
 
 @layer utilities {
-  /* Scroll-triggered entrance for cards further down the page. */
+  /* Scroll-triggered entrance for cards further down the page.
+     Uses the standalone `translate` property (not `transform`) so this
+     wrapper never becomes a containing block for `position: fixed`
+     descendants — the ExperienceCard logo cursor relies on `fixed`
+     staying anchored to the viewport, not this element. */
   .reveal-on-scroll {
     opacity: 0;
-    transform: translateY(20px);
+    translate: 0 20px;
     transition:
       opacity 900ms cubic-bezier(0.23, 1, 0.32, 1),
-      transform 900ms cubic-bezier(0.23, 1, 0.32, 1);
-    will-change: transform, opacity;
+      translate 900ms cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: translate, opacity;
   }
 
   .reveal-on-scroll[data-visible="true"] {
     opacity: 1;
-    transform: translateY(0);
+    translate: 0 0;
   }
 
   /* Staggered fade-up for the hero column on first paint. */
@@ -232,6 +266,7 @@ h4 {
       animation: none !important;
       transition: opacity 300ms ease !important;
       transform: none !important;
+      translate: none !important;
       opacity: 1 !important;
     }
   }
