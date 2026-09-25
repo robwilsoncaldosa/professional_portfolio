@@ -8,19 +8,19 @@
 @property --page-gradient-top {
   syntax: '<color>';
   inherits: true;
-  initial-value: #1c1a17;
+  initial-value: #121721;
 }
 
 @property --page-gradient-mid {
   syntax: '<color>';
   inherits: true;
-  initial-value: #141312;
+  initial-value: #0c1017;
 }
 
 @property --page-gradient-bottom {
   syntax: '<color>';
   inherits: true;
-  initial-value: #0f0e0d;
+  initial-value: #090b11;
 }
 
 /* Soft corner light derived from the active palette's accent (--ring).
@@ -46,100 +46,99 @@ h4 {
 @layer base {
   :root {
     /*
-      Warm Minimal Graphite — Emil Kowalski-style restraint
+      Midnight Navy + Platinum — the default palette
       ─────────────────────────────────────────────
-      Warm near-black surfaces (no blue tint), a single warm amber accent
-      used sparingly for links, focus rings and glow. Quiet by default;
-      color only shows up where it means something (CTAs, active nav
-      state, hovers) — including the full-palette swap when hovering an
-      experience card, which temporarily replaces every token below with
-      that employer's own brand palette.
+      Navy reads as authority and trust; platinum adds quiet polish
+      without introducing a second hue. Mirrors the "midnight-platinum"
+      entry in config/theme-palettes.config.ts so first paint matches the
+      theme system before any stored palette is applied. Hovering an
+      experience card temporarily swaps every token below for that
+      employer's brand palette.
 
       Surface hierarchy:
-        #141312  base canvas                    → --background / --primary
-        #1c1a18  card / elevated surface         → --card
-        #232019  tertiary surface                → --muted / --input
-        #2c2822  quaternary surface               → --accent
+        #0c1017  base canvas                    → --background / --primary
+        #141924  card / elevated surface         → --card
+        #1d232f  tertiary surface                → --muted / --input
+        #252d3c  quaternary surface               → --accent
 
       Text hierarchy:
-        #f2ede6  primary text                    → --foreground
-        #a39c92  secondary text                   → --secondary
-        #746c62  muted / placeholder text         → --muted-foreground
-        #2c2822  dividers                         → --border
+        #eaecf1  primary text                    → --foreground
+        #9099ad  secondary text                   → --secondary
+        #646f87  muted / placeholder text         → --muted-foreground
 
       Accent:
-        #e8a33d  warm amber                       → --ring / --chart-1
+        #c9d1dc  platinum                         → --ring / --chart-1
     */
 
-    --background: 30 6% 8%;
-    --foreground: 40 24% 93%;
-    --card: 30 7% 11%;
-    --card-foreground: 40 24% 93%;
-    --popover: 30 7% 10%;
-    --popover-foreground: 40 24% 93%;
-    --primary: 30 6% 8%;
-    --primary-foreground: 40 24% 93%;
-    --secondary: 30 7% 62%;
-    --secondary-foreground: 40 24% 93%;
-    --muted: 30 8% 16%;
-    --muted-foreground: 30 6% 46%;
-    --accent: 30 9% 20%;
-    --accent-foreground: 40 24% 93%;
+    --background: 220 30% 7%;
+    --foreground: 220 20% 93%;
+    --card: 220 30% 11%;
+    --card-foreground: 220 20% 93%;
+    --popover: 220 30% 10%;
+    --popover-foreground: 220 20% 93%;
+    --primary: 220 30% 7%;
+    --primary-foreground: 220 20% 93%;
+    --secondary: 220 15% 62%;
+    --secondary-foreground: 220 20% 93%;
+    --muted: 220 24% 15%;
+    --muted-foreground: 220 15% 46%;
+    --accent: 220 24% 19%;
+    --accent-foreground: 220 20% 93%;
     --destructive: 0 72% 55%;
     --destructive-foreground: 0 0% 100%;
-    --border: 30 8% 18%;
-    --input: 30 8% 18%;
-    --ring: 36 78% 58%;
-    --chart-1: 36 78% 58%;
-    --chart-2: 15 65% 54%;
-    --chart-3: 45 85% 60%;
-    --chart-4: 25 55% 48%;
-    --chart-5: 50 65% 64%;
+    --border: 220 24% 17%;
+    --input: 220 24% 17%;
+    --ring: 215 21% 83%;
+    --chart-1: 215 21% 83%;
+    --chart-2: 197 20% 77%;
+    --chart-3: 229 20% 80%;
+    --chart-4: 183 20% 71%;
+    --chart-5: 243 20% 80%;
     --radius: 0.625rem;
 
     --card-opacity: 0.5;
-    --glow-primary-rgb: 232, 163, 61;
-    --page-gradient-top: #1c1a17;
-    --page-gradient-mid: #141312;
-    --page-gradient-bottom: #0f0e0d;
-    --page-gradient-accent-start: rgba(232, 163, 61, 0.05);
-    --page-gradient-accent-mid: rgba(232, 163, 61, 0.025);
-    --page-gradient-accent-end: rgba(15, 14, 13, 0.0);
+    --glow-primary-rgb: 201, 209, 220;
+    --page-gradient-top: #121721;
+    --page-gradient-mid: #0c1017;
+    --page-gradient-bottom: #090b11;
+    --page-gradient-accent-start: rgba(201, 209, 220, 0.05);
+    --page-gradient-accent-mid: rgba(201, 209, 220, 0.025);
+    --page-gradient-accent-end: rgba(9, 11, 17, 0.0);
   }
 
   .dark {
-    --background: 30 6% 8%;
-    --foreground: 40 24% 93%;
-    --card: 30 7% 11%;
-    --card-foreground: 40 24% 93%;
-    --popover: 30 7% 10%;
-    --popover-foreground: 40 24% 93%;
-    --primary: 30 6% 8%;
-    --primary-foreground: 40 24% 93%;
-    --secondary: 30 7% 62%;
-    --secondary-foreground: 40 24% 93%;
-    --muted: 30 8% 16%;
-    --muted-foreground: 30 6% 46%;
-    --accent: 30 9% 20%;
-    --accent-foreground: 40 24% 93%;
+    --background: 220 30% 7%;
+    --foreground: 220 20% 93%;
+    --card: 220 30% 11%;
+    --card-foreground: 220 20% 93%;
+    --popover: 220 30% 10%;
+    --popover-foreground: 220 20% 93%;
+    --primary: 220 30% 7%;
+    --primary-foreground: 220 20% 93%;
+    --secondary: 220 15% 62%;
+    --secondary-foreground: 220 20% 93%;
+    --muted: 220 24% 15%;
+    --muted-foreground: 220 15% 46%;
+    --accent: 220 24% 19%;
+    --accent-foreground: 220 20% 93%;
     --destructive: 0 72% 55%;
     --destructive-foreground: 0 0% 100%;
-    --border: 30 8% 18%;
-    --input: 30 8% 18%;
-    --ring: 36 78% 58%;
-    --chart-1: 36 78% 58%;
-    --chart-2: 15 65% 54%;
-    --chart-3: 45 85% 60%;
-    --chart-4: 25 55% 48%;
-    --chart-5: 50 65% 64%;
+    --border: 220 24% 17%;
+    --input: 220 24% 17%;
+    --ring: 215 21% 83%;
+    --chart-1: 215 21% 83%;
+    --chart-2: 197 20% 77%;
+    --chart-3: 229 20% 80%;
+    --chart-4: 183 20% 71%;
+    --chart-5: 243 20% 80%;
     --card-opacity: 0.5;
-    --glow-primary-rgb: 232, 163, 61;
-    --page-gradient-top: #1c1a17;
-    --page-gradient-mid: #141312;
-    --page-gradient-bottom: #0f0e0d;
-    --page-gradient-accent-start: rgba(232, 163, 61, 0.05);
-    --page-gradient-accent-mid: rgba(232, 163, 61, 0.025);
-    --page-gradient-accent-end: rgba(15, 14, 13, 0.0);
+    --glow-primary-rgb: 201, 209, 220;
+    --page-gradient-top: #121721;
+    --page-gradient-mid: #0c1017;
+    --page-gradient-bottom: #090b11;
+    --page-gradient-accent-start: rgba(201, 209, 220, 0.05);
+    --page-gradient-accent-mid: rgba(201, 209, 220, 0.025);
+    --page-gradient-accent-end: rgba(9, 11, 17, 0.0);
   }
 }
 

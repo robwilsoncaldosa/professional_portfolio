@@ -41,7 +41,7 @@ export const THEME_PALETTES: ThemePalette[] = [
   {
     id: "warm-graphite",
     name: "Warm Minimal Graphite",
-    tagline: "Emil Kowalski-style restraint — warm near-black + amber. Currently live.",
+    tagline: "Emil Kowalski-style restraint — warm near-black + amber.",
     swatch: { background: "#141312", card: "#1c1a18", accent: "#e8a33d" },
     vars: {
       background: "30 6% 8%",
@@ -333,7 +333,7 @@ export const THEME_PALETTES: ThemePalette[] = [
   {
     id: "midnight-platinum",
     name: "Midnight Navy + Platinum",
-    tagline: "Navy signals authority and trust (banks, law, consulting); platinum adds quiet polish without adding a hue.",
+    tagline: "Navy signals authority and trust (banks, law, consulting); platinum adds quiet polish without adding a hue. Currently live.",
     category: "premium",
     swatch: { background: "#0c1017", card: "#131823", accent: "#c9d1dc" },
     vars: {
@@ -851,7 +851,7 @@ export const THEME_PALETTES: ThemePalette[] = [
   },
 ];
 
-export const DEFAULT_PALETTE_ID = "warm-graphite";
+export const DEFAULT_PALETTE_ID = "midnight-platinum";
 
 export const THEME_STORAGE_KEY = "portfolio-theme-vars";
 export const THEME_PALETTE_ID_STORAGE_KEY = "portfolio-theme-palette-id";

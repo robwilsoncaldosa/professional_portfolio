@@ -26,7 +26,7 @@ const PALETTE_GROUPS = [
   },
   {
     title: 'Originals',
-    description: 'The palettes explored during the first design review, including the one currently live.',
+    description: 'The palettes explored during the first design review.',
     palettes: THEME_PALETTES.filter((palette) => !palette.category),
   },
   {
