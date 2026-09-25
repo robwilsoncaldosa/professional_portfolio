@@ -14,6 +14,7 @@ const ProjectsSection: React.FC = () => {
               title={project.name}
               description={project.description}
               outcome={project.outcome}
+              award={project.award}
               skills={project.skills}
               href={project.href}
               imageSrc={project.imageSrc}

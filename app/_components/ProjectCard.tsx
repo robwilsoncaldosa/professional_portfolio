@@ -1,4 +1,5 @@
 import React from 'react';
+import { TrophyIcon } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -14,6 +15,7 @@ interface ProjectCardProps {
   title: string;
   description: string;
   outcome?: string;
+  award?: string;
   skills: string[];
   href?: string;
   imageSrc?: string;
@@ -25,6 +27,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   title,
   description,
   outcome,
+  award,
   skills,
   href,
   imageSrc,
@@ -59,6 +62,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               <HeadingWithSubtext title={title} />
             </CardDescription>
             <CardContent className="px-0 text-sm">
+              {award && (
+                <p className="mt-2 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-foreground">
+                  <TrophyIcon className="h-3.5 w-3.5 shrink-0 text-ring" aria-hidden />
+                  {award}
+                </p>
+              )}
               {outcome && (
                 <p className="mt-2 text-xs font-bold uppercase tracking-wide text-ring">
                   {outcome}

@@ -11,11 +11,10 @@ import {
 } from '@/components/ui/morphing-dialog';
 import { formatCertificationDate, type CertificationConfig } from '@/config/certification-data.config';
 import {
-  CERTIFICATE_PREVIEW_HEIGHT,
-  CERTIFICATE_PREVIEW_WIDTH,
   CERTIFICATION_DIALOG_TRANSITION,
   CertificationDialogContent,
   IssuerMark,
+  previewSizeOf,
 } from './CertificationDialog';
 
 interface CertificationCardProps {
@@ -28,9 +27,12 @@ interface CertificationCardProps {
  */
 export const FeaturedCertificationCard: React.FC<CertificationCardProps> = ({ certification }) => {
   const { title, issuer, partner, issuedAt, expiresAt, accreditation, skills, previewSrc } = certification;
-  const highlight = expiresAt
-    ? `Valid through ${formatCertificationDate(expiresAt)}`
-    : accreditation ?? (partner ? `With ${partner}` : undefined);
+  const { width, height } = previewSizeOf(certification);
+  const highlight =
+    certification.highlight ??
+    (expiresAt
+      ? `Valid through ${formatCertificationDate(expiresAt)}`
+      : accreditation ?? (partner ? `With ${partner}` : undefined));
 
   return (
     <MorphingDialog transition={CERTIFICATION_DIALOG_TRANSITION}>
@@ -49,8 +51,8 @@ export const FeaturedCertificationCard: React.FC<CertificationCardProps> = ({ ce
               <MorphingDialogImage
                 src={previewSrc}
                 alt={`${title} certificate`}
-                width={CERTIFICATE_PREVIEW_WIDTH}
-                height={CERTIFICATE_PREVIEW_HEIGHT}
+                width={width}
+                height={height}
                 loading="lazy"
                 className="h-auto w-full rounded-[4px]"
               />
@@ -86,6 +88,7 @@ export const FeaturedCertificationCard: React.FC<CertificationCardProps> = ({ ce
  */
 export const CertificationGridCard: React.FC<CertificationCardProps> = ({ certification }) => {
   const { title, issuer, issuedAt, skills, previewSrc } = certification;
+  const { width, height } = previewSizeOf(certification);
 
   return (
     <MorphingDialog transition={CERTIFICATION_DIALOG_TRANSITION}>
@@ -99,8 +102,8 @@ export const CertificationGridCard: React.FC<CertificationCardProps> = ({ certif
             <MorphingDialogImage
               src={previewSrc}
               alt={`${title} certificate`}
-              width={CERTIFICATE_PREVIEW_WIDTH}
-              height={CERTIFICATE_PREVIEW_HEIGHT}
+              width={width}
+              height={height}
               loading="lazy"
               className="h-auto w-full rounded-md"
             />

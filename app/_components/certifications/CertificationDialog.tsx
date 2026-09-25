@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import type { Transition } from 'motion/react';
-import { CheckIcon, CloudIcon, CopyIcon, FileTextIcon, LinkedinIcon, XIcon } from 'lucide-react';
+import { ArrowUpRightIcon, CheckIcon, CloudIcon, CopyIcon, FileTextIcon, LinkedinIcon, TrophyIcon, XIcon } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import {
   MorphingDialogClose,
@@ -13,7 +13,9 @@ import {
   MorphingDialogTitle,
 } from '@/components/ui/morphing-dialog';
 import {
+  DEFAULT_PREVIEW_SIZE,
   formatCertificationDate,
+  getRelatedProject,
   type CertificationConfig,
   type CertificationIssuer,
 } from '@/config/certification-data.config';
@@ -25,13 +27,14 @@ export const CERTIFICATION_DIALOG_TRANSITION: Transition = {
   duration: 0.35,
 };
 
-/** Rendered preview size (see certification-data.config). */
-export const CERTIFICATE_PREVIEW_WIDTH = 1400;
-export const CERTIFICATE_PREVIEW_HEIGHT = 1082;
+/** Intrinsic preview size, so the browser reserves the right aspect ratio. */
+export const previewSizeOf = (certification: CertificationConfig) =>
+  certification.previewSize ?? DEFAULT_PREVIEW_SIZE;
 
 const ISSUER_ICONS: Record<CertificationIssuer, React.ElementType> = {
   'Google Cloud': CloudIcon,
   'LinkedIn Learning': LinkedinIcon,
+  'Hacktoberfest Cebu': TrophyIcon,
 };
 
 export function IssuerMark({ issuer, className }: { issuer: CertificationIssuer; className?: string }) {
@@ -111,6 +114,8 @@ export function CertificationDialogContent({ certification }: { certification: C
     file,
     previewSrc,
   } = certification;
+  const { width, height } = previewSizeOf(certification);
+  const relatedProject = getRelatedProject(certification);
 
   return (
     <MorphingDialogContainer>
@@ -122,8 +127,8 @@ export function CertificationDialogContent({ certification }: { certification: C
           <MorphingDialogImage
             src={previewSrc}
             alt={`${title} certificate`}
-            width={CERTIFICATE_PREVIEW_WIDTH}
-            height={CERTIFICATE_PREVIEW_HEIGHT}
+            width={width}
+            height={height}
             className="h-auto w-full rounded-lg"
           />
         </div>
@@ -137,16 +142,39 @@ export function CertificationDialogContent({ certification }: { certification: C
           </MorphingDialogTitle>
 
           <MorphingDialogDescription disableLayoutAnimation variants={DETAIL_VARIANTS} className="flex flex-1 flex-col">
-            {partner && <p className="mt-1 text-sm">In partnership with {partner}</p>}
+            {partner && (
+              <p className="mt-1 text-sm">
+                {certification.category === 'Awards' ? `Presented by ${partner}` : `In partnership with ${partner}`}
+              </p>
+            )}
 
             <dl className="mb-0 mt-5">
-              <DetailRow label="Issued">{formatCertificationDate(issuedAt)}</DetailRow>
+              <DetailRow label={certification.category === 'Awards' ? 'Awarded' : 'Issued'}>{formatCertificationDate(issuedAt)}</DetailRow>
               {expiresAt && <DetailRow label="Expires">{formatCertificationDate(expiresAt)}</DetailRow>}
               {duration && <DetailRow label="Duration">{duration}</DetailRow>}
               {accreditation && <DetailRow label="Credit">{accreditation}</DetailRow>}
-              <DetailRow label="Credential">
-                <CredentialId value={credentialId} />
-              </DetailRow>
+              {relatedProject && (
+                <DetailRow label="Project">
+                  {relatedProject.href ? (
+                    <a
+                      href={relatedProject.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 !text-foreground underline-offset-4 hover:underline"
+                    >
+                      {relatedProject.name}
+                      <ArrowUpRightIcon className="h-3.5 w-3.5" />
+                    </a>
+                  ) : (
+                    relatedProject.name
+                  )}
+                </DetailRow>
+              )}
+              {credentialId && (
+                <DetailRow label="Credential">
+                  <CredentialId value={credentialId} />
+                </DetailRow>
+              )}
             </dl>
 
             <div className="mt-5 flex flex-wrap gap-2">

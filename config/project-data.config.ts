@@ -43,6 +43,8 @@ export interface ProjectConfig {
     description: string;
     /** One-line result statement shown as a highlighted callout above the description. */
     outcome?: string;
+    /** Recognition the project received, shown with a trophy above the outcome. */
+    award?: string;
     skills: string[];
     href?: string;
     imageSrc: string;
@@ -80,13 +82,14 @@ const RAW_PROJECTS: ProjectConfig[] = [
         id: "barangay-konek",
         year: 2025,
         name: "Barangay Konek",
-        madeAt: "",
+        madeAt: "Hacktoberfest Cebu",
         description:
             "Barangay offices were running resident requests, certificate processing, and staff coordination through walk-ins and paper trails. I designed a single web platform with online request intake, real-time status tracking, in-app chat support, and role-based dashboards so residents and staff share one source of truth instead of duplicate manual logs.",
         outcome:
             "Replaced a paper-and-walk-in process with one system residents and staff both use to track requests end-to-end.",
-        skills: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Shadcn UI"],
-        href: "https://barangay-konek-vercel.app",
+        award: "Best Use of Blockchain · Hacktoberfest Cebu 2025",
+        skills: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Shadcn UI", "Blockchain"],
+        href: "https://barangay-konek.vercel.app",
         imageSrc: "/barangay-konek-landing-page.png",
         imageAlt: "Barangay Konek landing page",
         isFeatured: true,

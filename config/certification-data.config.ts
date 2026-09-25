@@ -7,6 +7,7 @@
  * 1. Drop the certificate PDF into `public/certifications/`.
  * 2. Render a preview: `pdftoppm -png -singlefile -scale-to-x 1400 -scale-to-y -1 <pdf> out`
  *    then `cwebp -q 82 out.png -o public/certifications/previews/<id>.webp`.
+ *    Set `previewSize` if the result isn't the default 1400×1082 (e.g. A4).
  * 3. Add an entry to `RAW_CERTIFICATIONS` with a stable kebab-case `id`.
  * 4. Set `isFeatured` to control whether it appears on the home page.
  *
@@ -15,12 +16,18 @@
  *   - ids are duplicated
  *   - required fields are missing
  *   - `skills` is empty
+ *   - `relatedProjectId` doesn't match a project in project-data.config
  *   - `issuedAt` is not an ISO date (YYYY-MM-DD)
  */
 
-export type CertificationIssuer = "Google Cloud" | "LinkedIn Learning";
+import { PROJECTS, type ProjectId } from "./project-data.config";
 
-export type CertificationCategory = "AI & Cloud" | "Frontend" | "Backend" | "Delivery";
+export type CertificationIssuer = "Google Cloud" | "LinkedIn Learning" | "Hacktoberfest Cebu";
+
+export type CertificationCategory = "Awards" | "AI & Cloud" | "Frontend" | "Backend" | "Delivery";
+
+/** Rendered size of most previews (US Letter landscape at 1400px wide). */
+export const DEFAULT_PREVIEW_SIZE = { width: 1400, height: 1082 } as const;
 
 export interface CertificationConfig {
   id: string;
@@ -33,7 +40,8 @@ export interface CertificationConfig {
   issuedAt: string;
   /** ISO date (YYYY-MM-DD) for certifications that expire. */
   expiresAt?: string;
-  credentialId: string;
+  /** Omitted for awards and other certificates that don't carry one. */
+  credentialId?: string;
   /** Continuing-education credit, e.g. "PMI · 1.25 PDUs". */
   accreditation?: string;
   duration?: string;
@@ -42,10 +50,31 @@ export interface CertificationConfig {
   file: string;
   /** Path under `public/` to the rendered preview image. */
   previewSrc: string;
+  /** Pixel size of `previewSrc`; defaults to DEFAULT_PREVIEW_SIZE. */
+  previewSize?: { width: number; height: number };
+  /** Overrides the highlighted line on the featured card. */
+  highlight?: string;
+  /** The project this certificate was earned for. */
+  relatedProjectId?: ProjectId;
   isFeatured?: boolean;
 }
 
 const RAW_CERTIFICATIONS: CertificationConfig[] = [
+  {
+    id: "best-use-of-blockchain",
+    title: "Best Use of Blockchain",
+    issuer: "Hacktoberfest Cebu",
+    partner: "JavaScript Cebu and PizzaPy",
+    category: "Awards",
+    issuedAt: "2025-10-26",
+    highlight: "Certificate of Excellence · Barangay Konek",
+    skills: ["Blockchain", "Decentralized Apps", "Civic Tech"],
+    file: "/certifications/Rob Wilson Caldosa - Best Use of Blockchain.pdf",
+    previewSrc: "/certifications/previews/best-use-of-blockchain.webp",
+    previewSize: { width: 1400, height: 990 },
+    relatedProjectId: "barangay-konek",
+    isFeatured: true,
+  },
   {
     id: "generative-ai-leader",
     title: "Generative AI Leader",
@@ -234,13 +263,21 @@ function validateCertificationsConfig(certifications: CertificationConfig[]) {
     }
     ids.add(certification.id);
 
-    for (const field of ["title", "issuer", "credentialId", "file", "previewSrc"] as const) {
+    for (const field of ["title", "issuer", "file", "previewSrc"] as const) {
       if (!certification[field]) {
         throw new Error(`certification-data.config: "${certification.id}" is missing ${field}`);
       }
     }
     if (certification.skills.length === 0) {
       throw new Error(`certification-data.config: "${certification.id}" has no skills`);
+    }
+    if (
+      certification.relatedProjectId &&
+      !PROJECTS.some((project) => project.id === certification.relatedProjectId)
+    ) {
+      throw new Error(
+        `certification-data.config: "${certification.id}" references unknown project "${certification.relatedProjectId}"`
+      );
     }
     for (const date of [certification.issuedAt, certification.expiresAt]) {
       if (date !== undefined && !ISO_DATE.test(date)) {
@@ -257,9 +294,13 @@ export const CERTIFICATIONS: readonly CertificationConfig[] = [...RAW_CERTIFICAT
   b.issuedAt.localeCompare(a.issuedAt)
 );
 
-export const FEATURED_CERTIFICATIONS = CERTIFICATIONS.filter((certification) => certification.isFeatured);
+/** Awards lead the featured list; everything else stays newest first. */
+export const FEATURED_CERTIFICATIONS = CERTIFICATIONS.filter((certification) => certification.isFeatured).sort(
+  (a, b) => Number(b.category === "Awards") - Number(a.category === "Awards")
+);
 
 export const CERTIFICATION_CATEGORIES: readonly CertificationCategory[] = [
+  "Awards",
   "AI & Cloud",
   "Frontend",
   "Backend",
@@ -272,4 +313,10 @@ export function formatCertificationDate(isoDate: string) {
     year: "numeric",
     timeZone: "UTC",
   });
+}
+
+export function getRelatedProject(certification: CertificationConfig) {
+  return certification.relatedProjectId
+    ? PROJECTS.find((project) => project.id === certification.relatedProjectId)
+    : undefined;
 }
