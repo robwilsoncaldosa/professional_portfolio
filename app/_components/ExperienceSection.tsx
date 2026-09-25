@@ -8,8 +8,8 @@ const ExperienceSection: React.FC = () => {
     <div id='Experience' className=' md:mt-20'>
       <h4 className="font-bold sticky top-0 py-3 bg-transparent backdrop-blur-lg sm:hidden px-6 z-50">EXPERIENCE</h4>
       <article className="group [&:has(.exp-card:hover)_.exp-card:not(:hover)]:opacity-[var(--card-opacity)] [&:has(.exp-card:focus-within)_.exp-card:not(:focus-within)]:opacity-[var(--card-opacity)]">
-        {EXPERIENCES.map(({ id, ...experience }, index) => (
-          <ScrollReveal key={id} index={index}>
+        {EXPERIENCES.map((experience, index) => (
+          <ScrollReveal key={experience.id} index={index}>
             <ExperienceCard {...experience} />
           </ScrollReveal>
         ))}

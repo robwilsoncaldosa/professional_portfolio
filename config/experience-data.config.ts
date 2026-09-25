@@ -27,6 +27,10 @@ export interface ExperienceConfig {
   achievements?: string[];
   skills?: string[];
   href?: string;
+  /** Company brand color (hex). Hovering the card previews it as the site's accent. */
+  brandColor?: string;
+  /** Official logo asset shown in the custom cursor while hovering the card. */
+  logoSrc?: string;
 }
 
 export interface ExperienceChangelogEntry {
@@ -83,6 +87,8 @@ const RAW_EXPERIENCES: ExperienceConfig[] = [
       "Google Cloud Platform",
       "Cloud Run",
     ],
+    brandColor: "#FF0000",
+    logoSrc: "/logos/mlhuillier.png",
   },
   {
     id: "accenture",
@@ -105,6 +111,8 @@ const RAW_EXPERIENCES: ExperienceConfig[] = [
       "Kafka",
     ],
     href: "https://www.accenture.com/ph-en",
+    brandColor: "#A100FF",
+    logoSrc: "/logos/accenture.svg",
   },
   {
     id: "dna-micro",
@@ -124,6 +132,8 @@ const RAW_EXPERIENCES: ExperienceConfig[] = [
       "Storybook",
     ],
     href: "https://www.dnamicro.com/",
+    brandColor: "#4089FD",
+    logoSrc: "/logos/dna-micro.png",
   },
   {
     id: "prince-retail",
@@ -136,6 +146,8 @@ const RAW_EXPERIENCES: ExperienceConfig[] = [
       "Developed and styled interactive web apps for the company's infrastructure department data and marketing data with a focus on user experience and performance optimization. Collaborated with cross-functional teams to ensure seamless integration and functionality.",
     skills: ["C#", ".NET Core", "JavaScript", "JQuery", "Bootstrap"],
     href: "https://www.princeretail.com/",
+    brandColor: "#FEE057",
+    logoSrc: "/logos/prince-retail.png",
   },
 ];
 
