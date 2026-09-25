@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <main className="w-full min-h-screen relative">
       <CursorGlow />
-      <div className="grid md:grid-cols-[42%_58%] mx-auto min-h-screen prose md:max-w-screen-xl prose-headings:text-foreground py-12 sm:py-0 relative z-10">
+      <div className="grid md:grid-cols-[46%_54%] mx-auto min-h-screen prose md:max-w-screen-xl md:px-12 prose-headings:text-foreground py-12 sm:py-0 relative z-10">
         <ProfileHeader />
         <section aria-label="right-section" className="text-secondary md:py-24">
           <AboutSection />
