@@ -10,6 +10,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-geist-sans)", "-apple-system", "Helvetica Neue", "sans-serif"],
+        mono: ["var(--font-geist-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
+      },
       transitionTimingFunction: {
         // Strong ease-out for UI feedback (Emil Kowalski)
         "out-strong": "cubic-bezier(0.23, 1, 0.32, 1)",
