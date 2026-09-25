@@ -7,7 +7,8 @@ import ContactCTA from './ContactCTA';
 const NAVIGATION_SECTIONS = [
   { id: 'About', label: 'ABOUT' },
   { id: 'Experience', label: 'EXPERIENCE' },
-  { id: 'Projects', label: 'PROJECTS' }
+  { id: 'Projects', label: 'PROJECTS' },
+  { id: 'Certifications', label: 'CERTIFICATIONS' }
 ] as const;
 
 type SectionId = typeof NAVIGATION_SECTIONS[number]['id'];
