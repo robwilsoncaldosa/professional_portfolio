@@ -19,6 +19,18 @@ const DEFAULT_PALETTE =
 
 const PALETTE_GROUPS = [
   {
+    title: 'Signature Glow',
+    description:
+      'The Ink + Indigo recipe: a canvas tinted with one hue, a strongly saturated spotlight, and a luminous accent. This is where the wow comes from.',
+    palettes: THEME_PALETTES.filter((palette) => palette.category === 'signature'),
+  },
+  {
+    title: 'Dark & Masculine',
+    description:
+      'Near-black canvases (4–5% lightness) with one restrained accent and a matching spotlight glow. Darker and more assertive than the premium set.',
+    palettes: THEME_PALETTES.filter((palette) => palette.category === 'dark'),
+  },
+  {
     title: 'Premium & Calm',
     description:
       'Curated from luxury and color-psychology research: a near-black canvas tinted with one hue and a single muted accent. Restrained, easy on the eyes, and quietly premium.',

@@ -8,19 +8,19 @@
 @property --page-gradient-top {
   syntax: '<color>';
   inherits: true;
-  initial-value: #12171d;
+  initial-value: #10132a;
 }
 
 @property --page-gradient-mid {
   syntax: '<color>';
   inherits: true;
-  initial-value: #0e1114;
+  initial-value: #0b0d17;
 }
 
 @property --page-gradient-bottom {
   syntax: '<color>';
   inherits: true;
-  initial-value: #0a0c0f;
+  initial-value: #080910;
 }
 
 /* Soft corner light derived from the active palette's accent (--ring).
@@ -70,75 +70,75 @@ h4 {
         #c9d1dc  platinum                         → --ring / --chart-1
     */
 
-    --background: 210 18% 7%;
-    --foreground: 210 20% 92%;
-    --card: 210 16% 10%;
-    --card-foreground: 210 20% 92%;
-    --popover: 210 16% 9%;
-    --popover-foreground: 210 20% 92%;
-    --primary: 210 18% 7%;
-    --primary-foreground: 210 20% 92%;
-    --secondary: 210 10% 64%;
-    --secondary-foreground: 210 20% 92%;
-    --muted: 210 14% 15%;
-    --muted-foreground: 210 8% 47%;
-    --accent: 210 13% 19%;
-    --accent-foreground: 210 20% 92%;
+    --background: 232 35% 7%;
+    --foreground: 228 33% 93%;
+    --card: 232 32% 10%;
+    --card-foreground: 228 33% 93%;
+    --popover: 232 32% 9%;
+    --popover-foreground: 228 33% 93%;
+    --primary: 232 35% 7%;
+    --primary-foreground: 228 33% 93%;
+    --secondary: 228 14% 66%;
+    --secondary-foreground: 228 33% 93%;
+    --muted: 232 24% 15%;
+    --muted-foreground: 228 12% 48%;
+    --accent: 232 22% 19%;
+    --accent-foreground: 228 33% 93%;
     --destructive: 0 72% 55%;
     --destructive-foreground: 0 0% 100%;
-    --border: 210 13% 17%;
-    --input: 210 13% 17%;
-    --ring: 209 50% 70%;
-    --chart-1: 209 50% 70%;
-    --chart-2: 205 45% 60%;
-    --chart-3: 215 35% 66%;
-    --chart-4: 198 40% 58%;
-    --chart-5: 220 30% 72%;
+    --border: 232 22% 17%;
+    --input: 232 22% 17%;
+    --ring: 230 94% 82%;
+    --chart-1: 230 94% 82%;
+    --chart-2: 239 84% 74%;
+    --chart-3: 250 90% 82%;
+    --chart-4: 217 91% 76%;
+    --chart-5: 262 83% 80%;
     --radius: 0.625rem;
 
     --card-opacity: 0.5;
-    --glow-primary-rgb: 38, 84, 140;
-    --page-gradient-top: #12171d;
-    --page-gradient-mid: #0e1114;
-    --page-gradient-bottom: #0a0c0f;
-    --page-gradient-accent-start: rgba(141, 180, 217, 0.05);
-    --page-gradient-accent-mid: rgba(141, 180, 217, 0.025);
-    --page-gradient-accent-end: rgba(10, 12, 15, 0.0);
+    --glow-primary-rgb: 79, 70, 229;
+    --page-gradient-top: #10132a;
+    --page-gradient-mid: #0b0d17;
+    --page-gradient-bottom: #080910;
+    --page-gradient-accent-start: rgba(165, 180, 252, 0.05);
+    --page-gradient-accent-mid: rgba(165, 180, 252, 0.025);
+    --page-gradient-accent-end: rgba(8, 9, 16, 0.0);
   }
 
   .dark {
-    --background: 210 18% 7%;
-    --foreground: 210 20% 92%;
-    --card: 210 16% 10%;
-    --card-foreground: 210 20% 92%;
-    --popover: 210 16% 9%;
-    --popover-foreground: 210 20% 92%;
-    --primary: 210 18% 7%;
-    --primary-foreground: 210 20% 92%;
-    --secondary: 210 10% 64%;
-    --secondary-foreground: 210 20% 92%;
-    --muted: 210 14% 15%;
-    --muted-foreground: 210 8% 47%;
-    --accent: 210 13% 19%;
-    --accent-foreground: 210 20% 92%;
+    --background: 232 35% 7%;
+    --foreground: 228 33% 93%;
+    --card: 232 32% 10%;
+    --card-foreground: 228 33% 93%;
+    --popover: 232 32% 9%;
+    --popover-foreground: 228 33% 93%;
+    --primary: 232 35% 7%;
+    --primary-foreground: 228 33% 93%;
+    --secondary: 228 14% 66%;
+    --secondary-foreground: 228 33% 93%;
+    --muted: 232 24% 15%;
+    --muted-foreground: 228 12% 48%;
+    --accent: 232 22% 19%;
+    --accent-foreground: 228 33% 93%;
     --destructive: 0 72% 55%;
     --destructive-foreground: 0 0% 100%;
-    --border: 210 13% 17%;
-    --input: 210 13% 17%;
-    --ring: 209 50% 70%;
-    --chart-1: 209 50% 70%;
-    --chart-2: 205 45% 60%;
-    --chart-3: 215 35% 66%;
-    --chart-4: 198 40% 58%;
-    --chart-5: 220 30% 72%;
+    --border: 232 22% 17%;
+    --input: 232 22% 17%;
+    --ring: 230 94% 82%;
+    --chart-1: 230 94% 82%;
+    --chart-2: 239 84% 74%;
+    --chart-3: 250 90% 82%;
+    --chart-4: 217 91% 76%;
+    --chart-5: 262 83% 80%;
     --card-opacity: 0.5;
-    --glow-primary-rgb: 38, 84, 140;
-    --page-gradient-top: #12171d;
-    --page-gradient-mid: #0e1114;
-    --page-gradient-bottom: #0a0c0f;
-    --page-gradient-accent-start: rgba(141, 180, 217, 0.05);
-    --page-gradient-accent-mid: rgba(141, 180, 217, 0.025);
-    --page-gradient-accent-end: rgba(10, 12, 15, 0.0);
+    --glow-primary-rgb: 79, 70, 229;
+    --page-gradient-top: #10132a;
+    --page-gradient-mid: #0b0d17;
+    --page-gradient-bottom: #080910;
+    --page-gradient-accent-start: rgba(165, 180, 252, 0.05);
+    --page-gradient-accent-mid: rgba(165, 180, 252, 0.025);
+    --page-gradient-accent-end: rgba(8, 9, 16, 0.0);
   }
 }
 
@@ -155,7 +155,7 @@ h4 {
     @apply bg-primary text-foreground;
     --page-glow: rgba(var(--glow-primary-rgb), 0.16);
     --page-glow-soft: hsl(var(--ring) / 0.05);
-    /* A gunmetal canvas lit from the top-left by the spotlight hue, with a
+    /* An ink canvas lit from the top-left by the spotlight hue, with a
        faint cool wash in the opposite corner so long scrolls never feel
        flat. The cursor spotlight (CursorGlow) sits on top of this. */
     background-color: hsl(var(--background));
