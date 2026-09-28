@@ -2,9 +2,9 @@ import React from 'react';
 import ScrollReveal from './ScrollReveal';
 
 const ABOUT_PARAGRAPHS = [
-  "I'm Rob, a Senior Software Developer in Cebu. I build dependable web applications, specializing in React and Next.js, with solid footing across Node.js, .NET, Docker, and Google Cloud.",
+  "I'm Rob, a Senior Software Developer in Cebu with three-plus years shipping production web apps. I build with React and Next.js at the core, backed by production experience in Node.js, .NET, Docker, and Google Cloud.",
   "Today I build financial applications at M Lhuillier, where reliability isn't optional. Before that, I delivered enterprise systems at Accenture and built the shared frontend components DNA Micro ran on.",
-  "AI is a tool, and I use it exceptionally well. Claude Code, Gemini CLI, and Codex help me learn codebases faster and ship more, while the architecture, review, and craft stay mine. I'm a Google Cloud certified Generative AI Leader, now preparing for Associate Cloud Engineer.",
+  "AI is a tool I use with intent. Claude Code and Codex got me through Barangay Konek's real-time request tracking and role-based dashboards during Hacktoberfest Cebu — the architecture, the review, and the calls on what actually ships stayed mine. I'm a Google Cloud certified Generative AI Leader, now preparing for Associate Cloud Engineer.",
 ] as const;
 
 const AboutSection: React.FC = () => {

@@ -62,7 +62,7 @@ const ProfileHeader: React.FC = () => {
       {/* Header Section */}
       <div className="mb-8">
         <h1 className="mb-0 md:text-5xl">
-          Rob Wilson<br className='sm:hidden' />
+          Rob Caldosa<br className='sm:hidden' />
         </h1>
         <span className="text-xl font-medium md:mt-10 leading-loose tracking-tight">
           Senior Software Developer

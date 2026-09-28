@@ -103,9 +103,9 @@ const RAW_EXPERIENCES: ExperienceConfig[] = [
     company: "Accenture",
     location: "eBloc 2 Tower, West Geonzon Street, Cebu IT Park, Apas, Cebu City, Cebu, Philippines",
     caption:
-      "Delivering dependable solutions that move work forward faster and create clear business value.",
+      "Enterprise systems built to hold up under client scrutiny, not just at demo.",
     description:
-      "Developing and maintaining enterprise applications for clients across various industries. Collaborating with global teams to implement solutions that meet business requirements. Participating in the full software development lifecycle from requirements gathering to deployment.",
+      "Built and maintained enterprise applications for Accenture's clients inside a Waterfall delivery process — carrying work from requirements through deployment while coordinating with teams spread across time zones.",
     skills: [
       "C#",
       "ASP.NET Core",
@@ -127,7 +127,7 @@ const RAW_EXPERIENCES: ExperienceConfig[] = [
     company: "DNA Micro Software Inc",
     location: "117 Gorordo Ave, Camputhaw, Cebu City, Cebu, Philippines",
     description:
-      "Build and maintain critical components used in DNA Micro's frontend across all projects. Work closely with Business Analysts, cross-functional teams, including developers, designers, functional managers, and product managers.",
+      "Build and maintain critical components used in DNA Micro's frontend across all projects — including keeping the MyGo Gorentals marketing site fast, styled, and running on that same shared base.",
     skills: [
       "JavaScript",
       "TypeScript",
@@ -149,7 +149,7 @@ const RAW_EXPERIENCES: ExperienceConfig[] = [
     location:
       "PRG Tower, P. Basubas Street, Brgy. Tipolo, Mandaue City, Cebu, Philippines",
     description:
-      "Developed and styled interactive web apps for the company's infrastructure department data and marketing data with a focus on user experience and performance optimization. Collaborated with cross-functional teams to ensure seamless integration and functionality.",
+      "Built AIM and the LSM Toolbox — systems handling hierarchical application data, proactive notifications, and the approval workflows regional managers used to communicate with headquarters.",
     skills: ["C#", ".NET Core", "JavaScript", "JQuery", "Bootstrap"],
     href: "https://www.princeretail.com/",
     brandColor: "#FEE057",

@@ -19,6 +19,24 @@ const DEFAULT_PALETTE =
 
 const PALETTE_GROUPS = [
   {
+    title: 'Your Own Glow',
+    description:
+      'Same spotlight-and-cursor-glow effect, but no navy or blue, so the site stops reading like brittanychiang.com. Deep, masculine canvases with a saturated glow and a luminous accent.',
+    palettes: THEME_PALETTES.filter((palette) => palette.category === 'own'),
+  },
+  {
+    title: 'Espresso',
+    description:
+      'Espresso + Copper and its variations: warm roast canvases with a copper-to-flame spotlight, and accents pushed for contrast, from vivid copper and gold to cool ice blue and violet.',
+    palettes: THEME_PALETTES.filter((palette) => palette.category === 'espresso'),
+  },
+  {
+    title: 'Dark Blue-Violet',
+    description:
+      'Deeper and darker than Ink + Indigo, leaning violet instead of navy so it never reads as brittanychiang.com. Premium accents: silver, ice, gold, champagne, platinum.',
+    palettes: THEME_PALETTES.filter((palette) => palette.category === 'blue-violet'),
+  },
+  {
     title: 'Signature Glow',
     description:
       'The Ink + Indigo recipe: a canvas tinted with one hue, a strongly saturated spotlight, and a luminous accent. This is where the wow comes from.',

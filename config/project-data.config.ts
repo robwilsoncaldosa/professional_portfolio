@@ -86,7 +86,7 @@ const RAW_PROJECTS: ProjectConfig[] = [
         name: "Barangay Konek",
         madeAt: "Hacktoberfest Cebu",
         description:
-            "Barangay offices ran resident requests, certificate processing, and staff coordination through walk-ins and paper logs. I designed one web platform with online request intake, real-time status tracking, in-app chat, and role-based dashboards, so residents and staff finally share a single source of truth.",
+            "Barangay offices ran resident requests, certificate processing, and staff coordination through walk-ins and paper logs. Our team built one web platform with online request intake, real-time status tracking, in-app chat, and role-based dashboards, so residents and staff finally share a single source of truth. I owned the frontend and user flow.",
         outcome:
             "Turned a paper-and-walk-in process into one system residents and staff both use to track requests end to end.",
         award: "Best Use of Blockchain · Hacktoberfest Cebu 2025",
@@ -125,7 +125,7 @@ const RAW_PROJECTS: ProjectConfig[] = [
         name: "Net Notify",
         madeAt: "",
         description:
-            "Monthly billing reminders were sent by manually copying customer details into individual text messages. I built an automation layer that merges customer data into personalized SMS templates on a schedule and tracks delivery status per message.",
+            "Monthly billing reminders were sent by manually copying customer details into individual text messages. I built this one solo and full stack, from the UI to the scheduling and SMS layer, merging customer data into personalized templates on a schedule and tracking delivery status per message.",
         outcome:
             "Turned a manual, one-by-one texting process into a scheduled, template-driven send with per-message delivery tracking.",
         skills: [
@@ -146,7 +146,7 @@ const RAW_PROJECTS: ProjectConfig[] = [
         name: "Borak",
         madeAt: "",
         description:
-            "Borak offers curated Cebu tour packages with van services, showcasing famous tourist spots and providing seamless booking for an unforgettable island experience.",
+            "A booking site for curated Cebu tour packages with van service, built with a team. I owned the frontend and user flow: browsing available tours, checking dates, and reserving a slot in one flow instead of back-and-forth over chat.",
         skills: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Shadcn UI"],
         href: "https://borak.vercel.app",
         imageSrc: "/borak-landing-page.png",
@@ -159,7 +159,7 @@ const RAW_PROJECTS: ProjectConfig[] = [
         name: "AliPlace",
         madeAt: "",
         description:
-            "AliPlace helps people find their perfect property with interactive maps, detailed listings, and intuitive search filters, making it easy to explore neighborhoods and discover homes or investments that truly fit their lifestyle.",
+            "A property-search site with interactive maps and filterable listings, built with a team. I owned the frontend and user flow, so narrowing down by neighborhood, price, or type happens right on the map instead of scrolling a flat list.",
         skills: ["Next.js", "React", "Tailwind CSS"],
         href: "https://aliplace.vercel.app/",
         imageSrc: "/aliplace-landing-page.webp",
