@@ -2243,6 +2243,7 @@ export function resolvePaletteVars(vars: PaletteVars): Record<string, string> {
     "--chart-4": vars.chart4,
     "--chart-5": vars.chart5,
     "--glow-primary-rgb": vars.glowPrimaryRgb,
+    "--glow-color": `rgb(${vars.glowPrimaryRgb})`,
     "--page-gradient-top": vars.pageGradientTop,
     "--page-gradient-mid": vars.pageGradientMid,
     "--page-gradient-bottom": vars.pageGradientBottom,
@@ -2289,9 +2290,11 @@ let previewDepth = 0;
  * touches localStorage or cookies — `clearPalettePreview` restores exactly
  * whatever was active before the hover, however it got there.
  */
-export function previewPalette(palette: ThemePalette) {
+export function previewPalette(palette: ThemePalette, options: { force?: boolean } = {}) {
   if (typeof window === "undefined") return;
-  if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+  // Hover previews only make sense with a real pointer. Scroll-driven
+  // previews (touch screens) pass `force`.
+  if (!options.force && !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
 
   if (previewDepth === 0) {
     const computed = getComputedStyle(document.documentElement);
@@ -2302,6 +2305,60 @@ export function previewPalette(palette: ThemePalette) {
   }
   previewDepth += 1;
   applyPalette(palette);
+}
+
+/**
+ * Applies a palette the visitor picked on purpose (the randomizer). If a
+ * company preview is currently showing, the pick becomes what the page
+ * returns to once that preview ends, instead of being rolled back.
+ */
+export function applyUserPalette(palette: ThemePalette) {
+  const resolved = resolvePaletteVars(palette.vars);
+  if (previewDepth > 0) previewSnapshot = resolved;
+  applyResolvedVars(resolved);
+  storePalette(palette);
+}
+
+/**
+ * Hand-picked palettes the randomizer draws from: dark, saturated glow,
+ * bright accent, no navy/teal canvases, nothing pink or muted.
+ */
+export const RANDOM_PALETTE_IDS = [
+  "dark-roast-flame",
+  "espresso-molten-copper",
+  "espresso-electric-violet",
+  "espresso-saffron",
+  "obsidian-champagne",
+  "oxblood-champagne",
+  "royal-purple-gold",
+  "plum-brass",
+  "imperial-violet-ice",
+  "gunmetal-violet",
+  "forest-brass",
+  "emerald-gold",
+  "bordeaux-brass",
+  "volcanic",
+  "carbon-lime",
+  "midnight-violet-silver",
+  "void-violet",
+  "crimson-noir",
+  "black-jade",
+  "graphite-crimson",
+  "twilight-electric-violet",
+  "carbon-copper",
+  "indigo-amber",
+  "emerald-night",
+  "aurora-night",
+  "deep-indigo-ice",
+  "sapphire-violet-platinum",
+  "cobalt-violet-periwinkle",
+] as const;
+
+export function pickRandomPalette(excludeId?: string | null): ThemePalette {
+  const pool = RANDOM_PALETTE_IDS.filter((id) => id !== excludeId)
+    .map((id) => THEME_PALETTES.find((palette) => palette.id === id))
+    .filter((palette): palette is ThemePalette => Boolean(palette));
+  return pool[Math.floor(Math.random() * pool.length)];
 }
 
 export function clearPalettePreview() {

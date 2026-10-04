@@ -1,5 +1,6 @@
 'use client'
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { ChevronLeftIcon, ChevronRightIcon, PaletteIcon, RotateCcwIcon } from 'lucide-react';
 import {
   THEME_PALETTES,
@@ -30,6 +31,7 @@ const GROUPS: { title: string; category: ThemePalette['category'] }[] = [
 ];
 
 const ThemeSwitcher: React.FC = () => {
+  const pathname = usePathname();
   const [isEnabled, setIsEnabled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [activeId, setActiveId] = useState(DEFAULT_PALETTE_ID);
@@ -89,7 +91,7 @@ const ThemeSwitcher: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isEnabled, step]);
 
-  if (!isEnabled) return null;
+  if (!isEnabled || pathname.startsWith('/personal')) return null;
 
   const active = THEME_PALETTES.find((palette) => palette.id === activeId);
 
@@ -101,7 +103,7 @@ const ThemeSwitcher: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-2 text-foreground">
+    <div className="fixed bottom-20 right-4 z-50 flex flex-col items-end gap-2 text-foreground">
       <div
         className={`max-h-[60vh] w-72 origin-bottom-right overflow-y-auto rounded-xl border border-border bg-card/95 p-2 shadow-2xl backdrop-blur transition-[opacity,transform] duration-150 ease-out motion-reduce:transition-none ${
           isOpen ? 'scale-100 opacity-100' : 'pointer-events-none scale-95 opacity-0'

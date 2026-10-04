@@ -13,6 +13,10 @@ export default {
       fontFamily: {
         sans: ["var(--font-geist-sans)", "-apple-system", "Helvetica Neue", "sans-serif"],
         mono: ["var(--font-geist-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
+        // Anthology look (intro, personal side, theme glyph): wide heavy
+        // grotesk for titles, a technical mono for HUD-style labels.
+        display: ["var(--font-display)", "var(--font-geist-sans)", "sans-serif"],
+        hud: ["var(--font-hud)", "var(--font-geist-mono)", "monospace"],
       },
       transitionTimingFunction: {
         // Strong ease-out for UI feedback (Emil Kowalski)

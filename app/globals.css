@@ -32,6 +32,149 @@
   initial-value: transparent;
 }
 
+
+/* Palette tokens are HSL channel triplets ("18 32% 4.5%"). Registering
+   them with a real syntax lets the browser interpolate them, so a company
+   preview or a randomized theme fades across the whole page instead of
+   snapping. Transitions are opt-in via html.theme-anim (see below). */
+@property --background {
+  syntax: '<number> <percentage> <percentage>';
+  inherits: true;
+  initial-value: 0 0% 0%;
+}
+
+@property --foreground {
+  syntax: '<number> <percentage> <percentage>';
+  inherits: true;
+  initial-value: 0 0% 0%;
+}
+
+@property --card {
+  syntax: '<number> <percentage> <percentage>';
+  inherits: true;
+  initial-value: 0 0% 0%;
+}
+
+@property --card-foreground {
+  syntax: '<number> <percentage> <percentage>';
+  inherits: true;
+  initial-value: 0 0% 0%;
+}
+
+@property --popover {
+  syntax: '<number> <percentage> <percentage>';
+  inherits: true;
+  initial-value: 0 0% 0%;
+}
+
+@property --popover-foreground {
+  syntax: '<number> <percentage> <percentage>';
+  inherits: true;
+  initial-value: 0 0% 0%;
+}
+
+@property --primary {
+  syntax: '<number> <percentage> <percentage>';
+  inherits: true;
+  initial-value: 0 0% 0%;
+}
+
+@property --primary-foreground {
+  syntax: '<number> <percentage> <percentage>';
+  inherits: true;
+  initial-value: 0 0% 0%;
+}
+
+@property --secondary {
+  syntax: '<number> <percentage> <percentage>';
+  inherits: true;
+  initial-value: 0 0% 0%;
+}
+
+@property --secondary-foreground {
+  syntax: '<number> <percentage> <percentage>';
+  inherits: true;
+  initial-value: 0 0% 0%;
+}
+
+@property --muted {
+  syntax: '<number> <percentage> <percentage>';
+  inherits: true;
+  initial-value: 0 0% 0%;
+}
+
+@property --muted-foreground {
+  syntax: '<number> <percentage> <percentage>';
+  inherits: true;
+  initial-value: 0 0% 0%;
+}
+
+@property --accent {
+  syntax: '<number> <percentage> <percentage>';
+  inherits: true;
+  initial-value: 0 0% 0%;
+}
+
+@property --accent-foreground {
+  syntax: '<number> <percentage> <percentage>';
+  inherits: true;
+  initial-value: 0 0% 0%;
+}
+
+@property --border {
+  syntax: '<number> <percentage> <percentage>';
+  inherits: true;
+  initial-value: 0 0% 0%;
+}
+
+@property --input {
+  syntax: '<number> <percentage> <percentage>';
+  inherits: true;
+  initial-value: 0 0% 0%;
+}
+
+@property --ring {
+  syntax: '<number> <percentage> <percentage>';
+  inherits: true;
+  initial-value: 0 0% 0%;
+}
+
+@property --chart-1 {
+  syntax: '<number> <percentage> <percentage>';
+  inherits: true;
+  initial-value: 0 0% 0%;
+}
+
+@property --chart-2 {
+  syntax: '<number> <percentage> <percentage>';
+  inherits: true;
+  initial-value: 0 0% 0%;
+}
+
+@property --chart-3 {
+  syntax: '<number> <percentage> <percentage>';
+  inherits: true;
+  initial-value: 0 0% 0%;
+}
+
+@property --chart-4 {
+  syntax: '<number> <percentage> <percentage>';
+  inherits: true;
+  initial-value: 0 0% 0%;
+}
+
+@property --chart-5 {
+  syntax: '<number> <percentage> <percentage>';
+  inherits: true;
+  initial-value: 0 0% 0%;
+}
+
+@property --glow-color {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: rgb(234, 88, 12);
+}
+
 body {
   font-family: var(--font-geist-sans), -apple-system, "Helvetica Neue", sans-serif;
   min-height: 100vh;
@@ -212,6 +355,47 @@ h4 {
   }
 }
 
+/* Smooth theme swaps (company previews, randomizer). Added after mount so
+   a saved theme never visibly fades in on first paint, and removed while a
+   view transition runs so the circular reveal shows true colors. */
+:root {
+  --theme-ms: 650ms;
+  --theme-ease: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+html.theme-anim:not(.theme-vt) {
+  transition:
+    --background var(--theme-ms) var(--theme-ease),
+    --foreground var(--theme-ms) var(--theme-ease),
+    --card var(--theme-ms) var(--theme-ease),
+    --card-foreground var(--theme-ms) var(--theme-ease),
+    --popover var(--theme-ms) var(--theme-ease),
+    --popover-foreground var(--theme-ms) var(--theme-ease),
+    --primary var(--theme-ms) var(--theme-ease),
+    --primary-foreground var(--theme-ms) var(--theme-ease),
+    --secondary var(--theme-ms) var(--theme-ease),
+    --secondary-foreground var(--theme-ms) var(--theme-ease),
+    --muted var(--theme-ms) var(--theme-ease),
+    --muted-foreground var(--theme-ms) var(--theme-ease),
+    --accent var(--theme-ms) var(--theme-ease),
+    --accent-foreground var(--theme-ms) var(--theme-ease),
+    --border var(--theme-ms) var(--theme-ease),
+    --input var(--theme-ms) var(--theme-ease),
+    --ring var(--theme-ms) var(--theme-ease),
+    --chart-1 var(--theme-ms) var(--theme-ease),
+    --chart-2 var(--theme-ms) var(--theme-ease),
+    --chart-3 var(--theme-ms) var(--theme-ease),
+    --chart-4 var(--theme-ms) var(--theme-ease),
+    --chart-5 var(--theme-ms) var(--theme-ease),
+    --glow-color var(--theme-ms) var(--theme-ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.theme-anim {
+    transition: none !important;
+  }
+}
+
 @layer utilities {
   /* Scroll-triggered entrance for cards further down the page.
      Uses the standalone `translate` property (not `transform`) so this
@@ -351,5 +535,164 @@ h4 {
   /* Same crossfade, no movement. */
   ::view-transition-new(.page-enter) {
     animation: page-leave 180ms ease-out reverse both;
+  }
+}
+
+/* ─── Theme shuffle: shaped reveal ─────────────────────────────
+   The reveal itself is a clip-path animation started from the theme glyph
+   (ThemeRandomizer). These rules just stop the browser's default crossfade
+   and keep the two snapshots stacked. */
+html.theme-vt::view-transition-old(root),
+html.theme-vt::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+html.theme-vt::view-transition-old(root) {
+  z-index: 1;
+}
+
+html.theme-vt::view-transition-new(root) {
+  z-index: 2;
+}
+
+/* ─── Intro ──────────────────────────────────────────────────────── */
+html[data-intro="skip"] .intro-overlay,
+html[data-intro="done"] .intro-overlay {
+  display: none;
+}
+
+/* Hold the hero's entrance until the intro hands the page over. */
+html[data-intro="active"] .hero-stagger>* {
+  animation-play-state: paused;
+}
+
+html[data-intro="active"] {
+  overflow: hidden;
+}
+
+/* Theme glyph: a slow idle bob so it reads as something to touch, and
+   the RGB-split layers only while hovered or shuffling. */
+@keyframes glyph-bob {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -3px; }
+}
+
+.theme-glyph-inner {
+  animation: glyph-bob 3.2s ease-in-out infinite;
+}
+
+.theme-glyph:hover .theme-glyph-inner,
+.theme-glyph[data-shuffling="true"] .theme-glyph-inner {
+  animation-play-state: paused;
+}
+
+.theme-glyph-glitch {
+  display: none;
+}
+
+.theme-glyph[data-shuffling="true"] .theme-glyph-glitch {
+  display: block;
+}
+
+@media (hover: hover) {
+  .theme-glyph:hover .theme-glyph-glitch {
+    display: block;
+  }
+}
+
+/* Anthology display face: Archivo at its widest, heaviest cut. */
+.font-display {
+  font-stretch: 125%;
+  font-weight: 900;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-glyph-inner {
+    animation: none;
+  }
+
+  .theme-glyph-glitch {
+    display: none !important;
+  }
+}
+
+/* Intro title glitch. Each layer is the same text clipped to a band and
+   nudged sideways in a different tint, stepped (not eased) so it reads as
+   a signal fault rather than a slide. */
+@keyframes intro-flicker {
+  0%, 100% { opacity: 1; }
+  8% { opacity: 0.2; }
+  10% { opacity: 1; }
+  44% { opacity: 1; }
+  46% { opacity: 0.4; }
+  48% { opacity: 1; }
+}
+
+@keyframes intro-slice-a {
+  0% { clip-path: inset(0 0 88% 0); translate: -10px 0; }
+  20% { clip-path: inset(34% 0 52% 0); translate: 12px 0; }
+  40% { clip-path: inset(70% 0 12% 0); translate: -6px 0; }
+  60% { clip-path: inset(12% 0 74% 0); translate: 9px 0; }
+  80% { clip-path: inset(52% 0 30% 0); translate: -12px 0; }
+  100% { clip-path: inset(86% 0 2% 0); translate: 4px 0; }
+}
+
+@keyframes intro-slice-b {
+  0% { clip-path: inset(80% 0 6% 0); translate: 10px 0; }
+  25% { clip-path: inset(8% 0 80% 0); translate: -9px 0; }
+  50% { clip-path: inset(46% 0 40% 0); translate: 12px 0; }
+  75% { clip-path: inset(24% 0 62% 0); translate: -11px 0; }
+  100% { clip-path: inset(64% 0 22% 0); translate: 7px 0; }
+}
+
+@keyframes intro-scan {
+  from { background-position: 0 0; }
+  to { background-position: 0 8px; }
+}
+
+@keyframes intro-blink {
+  50% { opacity: 0.25; }
+}
+
+.intro-glitch-a,
+.intro-glitch-b {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.intro-glitch-a {
+  color: #ff2d55;
+  mix-blend-mode: screen;
+  animation: intro-slice-a 380ms steps(1, end) infinite;
+}
+
+.intro-glitch-b {
+  color: #19e3ff;
+  mix-blend-mode: screen;
+  animation: intro-slice-b 460ms steps(1, end) infinite;
+}
+
+.intro-flicker {
+  animation: intro-flicker 900ms steps(1, end) infinite;
+}
+
+.intro-scanlines {
+  background-image: repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 0 1px, transparent 1px 4px);
+  animation: intro-scan 600ms linear infinite;
+}
+
+.intro-blink {
+  animation: intro-blink 1.1s steps(1, end) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-glitch-a,
+  .intro-glitch-b,
+  .intro-flicker,
+  .intro-scanlines,
+  .intro-blink {
+    animation: none;
   }
 }

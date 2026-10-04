@@ -1,5 +1,6 @@
 import React from 'react';
 import ScrollReveal from './ScrollReveal';
+import PersonalLink from './PersonalLink';
 
 const ABOUT_PARAGRAPHS = [
   "I'm Rob, a Senior Software Developer in Cebu with three-plus years shipping production web apps. I build with React and Next.js at the core, backed by production experience in Node.js, .NET, Docker, and Google Cloud.",
@@ -12,7 +13,7 @@ const AboutSection: React.FC = () => {
     <section id='About' className='*:px-6' aria-labelledby="about-heading">
       <h4
         id="about-heading"
-        className="font-bold sticky top-0 bg-transparent backdrop-blur-lg py-3 sm:hidden z-50"
+        className="font-bold sticky top-0 bg-background/80 text-foreground backdrop-blur-lg py-3 md:hidden z-50"
       >
         ABOUT
       </h4>
@@ -25,6 +26,9 @@ const AboutSection: React.FC = () => {
             </p>
           </ScrollReveal>
         ))}
+        <ScrollReveal index={ABOUT_PARAGRAPHS.length}>
+          <PersonalLink />
+        </ScrollReveal>
       </div>
     </section>
   );

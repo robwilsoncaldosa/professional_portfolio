@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import SocialLinks from './SocialLinks';
 import ContactCTA from './ContactCTA';
-import { Sparkles } from 'lucide-react';
+import MorphGlyph from './MorphGlyph';
+import { AI_SYMBOLS } from '@/lib/symbol-morph';
 
 // Navigation configuration - easy to maintain and extend
 const NAVIGATION_SECTIONS = [
@@ -71,7 +72,7 @@ const ProfileHeader: React.FC = () => {
           I build dependable, human-centered software, and I use AI to ship it faster without handing it the judgment.
         </p>
         <p className="mt-4 mb-0 flex items-center gap-2 text-sm text-secondary">
-          <Sparkles className="h-3.5 w-3.5 shrink-0 text-ring" aria-hidden />
+          <MorphGlyph symbols={AI_SYMBOLS} className="h-4 w-4 shrink-0 text-ring" glow="hsl(var(--ring) / 0.5)" />
           Google Cloud Generative AI Leader
         </p>
       </div>

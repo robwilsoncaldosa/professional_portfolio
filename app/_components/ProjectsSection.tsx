@@ -6,7 +6,7 @@ import { FEATURED_PROJECTS } from '../../config/project-data.config';
 const ProjectsSection: React.FC = () => {
   return (
     <div id='Projects' className=' md:mt-20'>
-      <h4 className="font-bold sticky top-0 py-3 bg-transparent backdrop-blur-lg sm:hidden z-50 px-6">PROJECTS</h4>
+      <h4 className="font-bold sticky top-0 py-3 bg-background/80 text-foreground backdrop-blur-lg md:hidden z-50 px-6">PROJECTS</h4>
       <article className="group [&:has(.exp-card:hover)_.exp-card:not(:hover)]:opacity-[var(--card-opacity)] [&:has(.exp-card:focus-within)_.exp-card:not(:focus-within)]:opacity-[var(--card-opacity)]">
         {FEATURED_PROJECTS.map((project, index) => (
           <ScrollReveal key={project.id} index={index}>

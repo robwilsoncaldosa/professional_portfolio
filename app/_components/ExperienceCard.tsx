@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -40,6 +40,32 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   const companyPalette = THEME_PALETTES.find((palette) => palette.id === id);
   const [showLogoCursor, setShowLogoCursor] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  // Touch screens have no hover, so the card sitting at the middle of the
+  // viewport takes over as the "hovered" one: scrolling into a company
+  // previews its palette, scrolling past it fades back.
+  useEffect(() => {
+    const node = cardRef.current;
+    if (!node || !companyPalette) return;
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+    let active = false;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting === active) return;
+        active = entry.isIntersecting;
+        if (active) previewPalette(companyPalette, { force: true });
+        else clearPalettePreview();
+      },
+      { rootMargin: '-45% 0px -45% 0px' }
+    );
+    observer.observe(node);
+    return () => {
+      observer.disconnect();
+      if (active) clearPalettePreview();
+    };
+  }, [companyPalette]);
 
   useEffect(() => {
     const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -47,17 +73,21 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
     setShowLogoCursor(Boolean(logoSrc) && canHover && !reducedMotion);
   }, [logoSrc]);
 
+  // On touch screens the scroll observer above owns the preview; letting
+  // tap focus/blur also drive it would unbalance the preview counter.
+  const hoversWithPointer = () => window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   const handleEnter = () => {
-    if (companyPalette) previewPalette(companyPalette);
+    if (companyPalette && hoversWithPointer()) previewPalette(companyPalette);
     setIsHovering(true);
   };
   const handleLeave = () => {
-    if (companyPalette) clearPalettePreview();
+    if (companyPalette && hoversWithPointer()) clearPalettePreview();
     setIsHovering(false);
   };
 
   return (
     <Card
+      ref={cardRef}
       tabIndex={0}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}

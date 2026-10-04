@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Archivo, Geist, Geist_Mono, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { THEME_INIT_SCRIPT } from "@/config/theme-palettes.config";
+import { INTRO_INIT_SCRIPT } from "@/config/intro.config";
 import ThemeSwitcher from "./_components/ThemeSwitcher";
+import ThemeRandomizer from "./_components/ThemeRandomizer";
+import IntroOverlay from "./_components/IntroOverlay";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -11,6 +14,17 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const archivo = Archivo({
+  variable: "--font-display",
+  subsets: ["latin"],
+  axes: ["wdth"],
+});
+
+const jetBrainsMono = JetBrains_Mono({
+  variable: "--font-hud",
   subsets: ["latin"],
 });
 
@@ -64,11 +78,17 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${archivo.variable} ${jetBrainsMono.variable} antialiased`}
       >
+        <script dangerouslySetInnerHTML={{ __html: INTRO_INIT_SCRIPT }} />
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+        <noscript>
+          <style>{`.intro-overlay{display:none}html[data-intro="active"]{overflow:auto}`}</style>
+        </noscript>
         {children}
+        <ThemeRandomizer />
         <ThemeSwitcher />
+        <IntroOverlay />
       </body>
     </html>
   );
